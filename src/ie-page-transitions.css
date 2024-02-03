@@ -1,0 +1,496 @@
+/* Inherit some things … */
+::view-transition-image-pair(root),
+::view-transition-new(root),
+::view-transition-old(root) {
+    animation-delay: inherit;
+    animation-timing-function: inherit;
+}
+
+/* Use linear timing for all */
+:root:active-view-transition-type(page-transition)::view-transition-group(root) {
+    animation-timing-function: linear;
+}
+
+/* Set default animation to a fade without blending */
+@keyframes fade-in {
+    from { opacity: 0; }
+}
+:root:active-view-transition-type(page-transition)::view-transition-new(root) {
+    animation-name: fade-in;
+}
+@keyframes fade-out {
+    to { opacity: 0; }
+}
+:root:active-view-transition-type(page-transition)::view-transition-old(root) {
+    animation-name: fade-out;
+}
+
+/* Hide body when there is a manual transition being triggered */
+/* The call to startViewTransition should remove [data-ie-page-transitions] to show the contents again (using a VT)*/
+:root[data-ie-page-transitions] body {
+    visibility: hidden;
+}
+:root body {
+    visibility: visible;
+}
+
+/* Determine Duration */
+:root:active-view-transition-type(page-exit-duration-0_5) {
+    --ie-page-transitions-exit-duration: 0.5s;
+}
+:root:active-view-transition-type(page-exit-duration-1_0) {
+    --ie-page-transitions-exit-duration: 1.0s;
+}
+:root:active-view-transition-type(page-exit-duration-1_5) {
+    --ie-page-transitions-exit-duration: 1.5s;
+}
+:root:active-view-transition-type(page-exit-duration-2_0) {
+    --ie-page-transitions-exit-duration: 2.0s;
+}
+:root:active-view-transition-type(page-exit)::view-transition-group(root) {
+    animation-duration: var(--ie-page-transitions-exit-duration, 1s);
+}
+
+:root:active-view-transition-type(page-enter-duration-0_5) {
+    --ie-page-transitions-enter-duration: 0.5s;
+}
+:root:active-view-transition-type(page-enter-duration-1_0) {
+    --ie-page-transitions-enter-duration: 1.0s;
+}
+:root:active-view-transition-type(page-enter-duration-1_5) {
+    --ie-page-transitions-enter-duration: 1.5s;
+}
+:root:active-view-transition-type(page-enter-duration-2_0) {
+    --ie-page-transitions-enter-duration: 2.0s;
+}
+:root:active-view-transition-type(page-enter)::view-transition-group(root) {
+    animation-duration: var(--ie-page-transitions-enter-duration, 1s);
+}
+
+/* Only page-exit: only animate the old */
+:root:active-view-transition-type(page-exit):where(:not(:root:active-view-transition-type(page-enter))) {
+    &::view-transition-new(root) {
+        animation-name: none;
+        z-index: -1;
+    }
+}
+
+/* Only page-enter: only animate the new */
+:root:active-view-transition-type(page-enter):where(:not(:root:active-view-transition-type(page-exit))) {
+    &::view-transition-old(root) {
+        animation-name: none;
+        z-index: -1;
+    }
+}
+
+/* Both page-enter and page-exit: queue new snapshot after all old, but not for first entry animation */
+:root:active-view-transition-type(page-enter):active-view-transition-type(page-exit) {
+    &::view-transition-group(root) {
+        animation-duration: calc(var(--ie-page-transitions-exit-duration, 1s) + var(--ie-page-transitions-enter-duration, 1s));
+    }
+
+    /* Play one after the other */
+    &::view-transition-old(root) {
+        animation-duration: var(--ie-page-transitions-exit-duration, 1s);
+    }
+    &::view-transition-new(root) {
+        animation-delay: var(--ie-page-transitions-exit-duration, 1s);
+        animation-duration: var(--ie-page-transitions-enter-duration, 1s);
+    }
+
+    /* Make sure they both appear on top */
+    &::view-transition-old(root) {
+        z-index: 1;
+    }
+    &::view-transition-new(root) {
+        z-index: 1;
+    }
+}
+
+/* 0+1 – Rectangle */
+@keyframes box {
+    from {
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    to {
+        clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    }
+}
+@keyframes box--inverted {
+    from {
+        clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 100%, 100% 100%, 100% 0%);
+    }
+}
+
+/* 0 – Rectangle towards centre */
+:root:active-view-transition-type(page-enter-effect-0) {
+    &::view-transition-new(root) {
+        animation-name: box--inverted;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-0) {
+    &::view-transition-old(root) {
+        animation-name: box;
+    }
+}
+
+/* 1 – Rectangle from centre outwards */
+:root:active-view-transition-type(page-enter-effect-1) {
+    &::view-transition-new(root) {
+        animation-name: box;
+        animation-direction: reverse;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-1) {
+    &::view-transition-old(root) {
+        animation-name: box--inverted;
+        animation-direction: reverse;
+    }
+}
+
+/* 2+3 – Circle */
+@property --ie-page-transitions-circle-actual-size {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+@keyframes circle {
+    from {
+        --ie-page-transitions-circle-actual-size: 1px; /* Don’t start at 0px to prevent a glitch */
+    }
+    to {
+        --ie-page-transitions-circle-actual-size: 200vmax;
+    }
+}
+:root:active-view-transition-type(page-enter-effect-2)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-2)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-3)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-3)::view-transition-old(root) {
+    animation-name: circle;
+    mask:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="50" r="50" fill="black" /></svg>') center / var(--ie-page-transitions-circle-actual-size) var(--ie-page-transitions-circle-actual-size)  no-repeat,
+        linear-gradient(#000 0 0)
+    ;
+}
+
+/* 2 – Circle towards centre */
+:root:active-view-transition-type(page-enter-effect-2) {
+    &::view-transition-new(root) {
+        animation-direction: reverse;
+        mask-composite: exclude;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-2) {
+    &::view-transition-old(root) {
+        animation-direction: reverse;
+        mask-composite: intersect;
+    }
+}
+
+/* 3 – Circle from centre outwards */
+:root:active-view-transition-type(page-enter-effect-3) {
+    &::view-transition-new(root) {
+        mask-composite: intersect;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-3) {
+    &::view-transition-old(root) {
+        mask-composite: exclude;
+    }
+}
+
+/* 4+5+6+7 – Wipe */
+@keyframes wipe-up {
+    from {
+        clip-path: polygon(0% 100%, 0% 100%, 100% 100%, 100% 100%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+}
+@keyframes wipe-down {
+    from {
+        clip-path: polygon(0% 0%, 0% 0%, 100% 0%, 100% 0%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+}
+@keyframes wipe-right {
+    from {
+        clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+}
+@keyframes wipe-left {
+    from {
+        clip-path: polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+}
+
+/* 4 – Horizontal wipe from bottom to top */
+:root:active-view-transition-type(page-enter-effect-4) {
+    &::view-transition-new(root) {
+        animation-name: wipe-up;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-4) {
+    &::view-transition-old(root) {
+        animation-name: wipe-down;
+        animation-direction: reverse;
+    }
+}
+
+/* 5 – Horizontal wipe from top to bottom */
+:root:active-view-transition-type(page-enter-effect-5) {
+    &::view-transition-new(root) {
+        animation-name: wipe-down;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-5) {
+    &::view-transition-old(root) {
+        animation-name: wipe-up;
+        animation-direction: reverse;
+    }
+}
+
+/* 6 – Vertical wipe from left to right */
+:root:active-view-transition-type(page-enter-effect-6) {
+    &::view-transition-new(root) {
+        animation-name: wipe-right;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-6) {
+    &::view-transition-old(root) {
+        animation-name: wipe-left;
+        animation-direction: reverse;
+    }
+}
+
+/* 7 – Vertical wipe from right to left */
+:root:active-view-transition-type(page-enter-effect-7) {
+    &::view-transition-new(root) {
+        animation-name: wipe-left;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-7) {
+    &::view-transition-old(root) {
+        animation-name: wipe-right;
+        animation-direction: reverse;
+    }
+}
+
+/* 8+9 – Blinds */
+@property --ie-page-transitions-blinds-actual-size {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+@property --ie-page-transitions-blinds-target-size {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 100px;
+}
+@property --ie-page-transitions-blinds-target-direction {
+    syntax: "bottom | right";
+    inherits: false;
+    initial-value: bottom;
+}
+@keyframes blinds {
+    from {
+        --ie-page-transitions-blinds-actual-size: 0px;
+    }
+    to {
+        --ie-page-transitions-blinds-actual-size: var(--ie-page-transitions-blinds-target-size);
+    }
+}
+:root:active-view-transition-type(page-enter-effect-8)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-8)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-9)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-9)::view-transition-old(root) {
+    animation-name: blinds;
+    mask: repeating-linear-gradient(
+        to var(--ie-page-transitions-blinds-target-direction),
+        #000000,
+        #000000 var(--ie-page-transitions-blinds-actual-size),
+        transparent 0,
+        transparent var(--ie-page-transitions-blinds-target-size)
+    ), linear-gradient(#000 0 0);
+}
+
+/* 8 – Horizontal Blinds */
+:root:active-view-transition-type(page-enter-effect-8) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-blinds-target-size: calc(100vw / 6);
+        --ie-page-transitions-blinds-target-direction: right;
+        mask-composite: intersect;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-8) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-blinds-target-size: calc(100vw / 6);
+        --ie-page-transitions-blinds-target-direction: right;
+        mask-composite: exclude;
+    }
+}
+
+/* 9 – Vertical Blinds */
+:root:active-view-transition-type(page-enter-effect-9) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-blinds-target-size: calc(100vh / 6);
+        --ie-page-transitions-blinds-target-direction: bottom;
+        mask-composite: intersect;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-9) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-blinds-target-size: calc(100vh / 6);
+        --ie-page-transitions-blinds-target-direction: bottom;
+        mask-composite: exclude;
+    }
+}
+
+/* 13+14 - Vertical Window */
+@keyframes split-vertical {
+    from {
+        clip-path: polygon(50% 0%, 50% 100%, 50% 100%, 50% 0%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+}
+@keyframes split-vertical--inverted {
+    from {
+        clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%, 50% 0%, 50% 100%, 100% 100%, 100% 0%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 0%);
+    }
+}
+
+/* 13 – Vertical Window Opening from middle to sides */
+:root:active-view-transition-type(page-enter-effect-13) {
+    &::view-transition-new(root) {
+        animation-name: split-vertical--inverted;
+        animation-direction: reverse;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-13) {
+    &::view-transition-old(root) {
+        animation-name: split-vertical;
+        animation-direction: reverse;
+    }
+}
+
+/* 14 – Vertical Window Opening from side to middle */
+:root:active-view-transition-type(page-enter-effect-14) {
+    &::view-transition-new(root) {
+        animation-name: split-vertical;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-14) {
+    &::view-transition-old(root) {
+        animation-name: split-vertical--inverted;
+    }
+}
+
+/* 17+18+19+20 - Strips */
+@property --ie-page-transitions-strips-progress {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+}
+@property --ie-page-transitions-strips-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+@keyframes strips {
+    from {
+        --ie-page-transitions-strips-progress: 0%;
+    }
+    to {
+        --ie-page-transitions-strips-progress: 100%;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-17)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-17)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-18)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-18)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-19)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-19)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-20)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-20)::view-transition-new(root) {
+    animation-name: strips;
+    mask-image: linear-gradient(
+        var(--ie-page-transitions-strips-angle),
+        transparent, 
+        transparent var(--ie-page-transitions-strips-progress), 
+        black var(--ie-page-transitions-strips-progress), 
+        black
+    ), linear-gradient(#000 0 0);
+}
+
+/* 17 - Strips left down */
+:root:active-view-transition-type(page-enter-effect-17) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-strips-angle: 225deg;
+        mask-composite: exclude;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-17) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-strips-angle: 225deg;
+        mask-composite: intersect;
+    }
+}
+
+/* 18 - Strips left up */
+:root:active-view-transition-type(page-enter-effect-18) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-strips-angle: 315deg;
+        mask-composite: exclude;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-18) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-strips-angle: 315deg;
+        mask-composite: intersect;
+    }
+}
+
+/* 19 - Strips right down */
+:root:active-view-transition-type(page-enter-effect-19) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-strips-angle: 135deg;
+        mask-composite: exclude;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-19) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-strips-angle: 135deg;
+        mask-composite: intersect;
+    }
+}
+
+/* 20 - Strips right down */
+:root:active-view-transition-type(page-enter-effect-20) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-strips-angle: 45deg;
+        mask-composite: exclude;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-20) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-strips-angle: 45deg;
+        mask-composite: intersect;
+    }
+}

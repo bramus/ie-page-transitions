@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IE Page Transitions (SPA)</title>
+
+    <!-- Randomize page looks -->
+    <script src="/shared/randomize.js"></script>
+    <script>randomize();</script>
+
+    <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)">
+    <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)">
+
+    <link rel="stylesheet" href="/dist/ie-page-transitions.css">
+
+    <script>
+        document.documentElement.setAttribute('data-ie-page-transitions', '');
+        window.addEventListener('pagereveal', async (e) => {
+            const PageTransitions = await import('/dist/ie-page-transitions.spa.js');
+            PageTransitions.init();
+        });
+    </script>
+
+    <script type="module">
+        import * as PageTransitions from '/dist/ie-page-transitions.spa.js';
+
+        // On Click, call startPageTransition with a callback that updates the DOM
+        document.querySelector(`a[href="/spa"]`).addEventListener('click', (e) => {
+            e.preventDefault();
+            const t = PageTransitions.startViewTransition(randomize);
+        });
+    </script>
+</head>
+<body>
+    <a href="/">To Home</a>
+    <a href="/spa">Randomize</a>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+</body>
+</html>

@@ -1,0 +1,106 @@
+// Util functions
+const randomInteger = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const randomTransition = () => {
+    const candidates = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 17, 18, 19, 20];
+    return candidates[randomInteger(0, candidates.length-1)];
+}
+const extractParamsFromMetaTag = ($metaTagElement) => {
+    let duration, effect;
+
+    duration = /duration=(?<duration>\d+[\.\d+]*)/gmi.exec($metaTagElement.getAttribute('content'))?.groups?.duration ?? 1.0;
+    duration = parseFloat(duration).toFixed(1).replace('.','_');
+
+    effect = /transition=(?<transition>\d+)/gmi.exec($metaTagElement.getAttribute('content'))?.groups?.transition ?? 0;
+    if (effect == 23) effect = randomTransition();
+
+    return {
+        duration,
+        effect,
+    };
+}
+
+// Configure the View Transition on PageReveal
+// If none exists, manually create one if the author specified a Page-Enter effect
+window.addEventListener('pagereveal', async (e) => {
+    // Get Page-Enter Effect Meta Tag
+    const $pageEnter = document.querySelector('meta[http-equiv="Page-Enter"]');
+
+    // View Transition is about to happen!
+    if (e.viewTransition) {
+
+        // Page-Exit Effect: Get Duration and Effect
+        const prevPageExitEffect = sessionStorage.getItem('prevPageExitEffect');
+        const prevPageExitDuration = sessionStorage.getItem('prevPageExitDuration');
+
+        // Page-Exit Effect: Set proper types
+        if (prevPageExitDuration && prevPageExitEffect) {
+            e.viewTransition.types.add('page-exit');
+            e.viewTransition.types.add(`page-exit-effect-${prevPageExitEffect}`);
+            e.viewTransition.types.add(`page-exit-duration-${prevPageExitDuration}`);
+        }
+        
+        // Page-Enter Effect
+        if ($pageEnter) {
+            const { duration, effect } = extractParamsFromMetaTag($pageEnter);
+
+            // Set proper types
+            e.viewTransition.types.add('page-enter');
+            e.viewTransition.types.add(`page-enter-effect-${effect}`);
+            e.viewTransition.types.add(`page-enter-duration-${duration}`);
+        }
+
+        // Stop right here if no types determined or let the VT run
+        if (e.viewTransition.types.size > 0) {
+            e.viewTransition.types.add('page-transition');
+        } else {
+            e.viewTransition.skipTransition();
+        }
+    }
+    
+    // Page got accessed not coming from the same-origin or a reload or the like …
+    else {
+        if ($pageEnter) {
+            // Hide body contents (old snapshot)
+            document.documentElement.setAttribute('data-ie-page-transitions', '');
+
+            // Extract values
+            const { duration, effect } = extractParamsFromMetaTag($pageEnter);
+
+            // Manually start a View Transition
+            const t = document.startViewTransition({
+                types: [
+                    'page-transition',
+                    'page-enter',
+                    `page-enter-effect-${effect}`,
+                    `page-enter-duration-${duration}`,
+                ],
+                update: () => {
+                    // Show body contents again (new snapshot)
+                    document.documentElement.removeAttribute('data-ie-page-transitions');
+                }
+            });
+        }
+    }
+});
+
+// Communicate exit effect+duration from old page to new page on PageSwap
+window.addEventListener('pageswap', async (e) => {
+    const $pageExit = document.querySelector('meta[http-equiv="Page-Exit"]');
+
+    // Page-Exit effect was set and VT is about to happen
+    if ($pageExit && e.viewTransition) {
+        const { duration, effect } = extractParamsFromMetaTag($pageExit);
+
+        // Persist in storage
+        sessionStorage.setItem('prevPageExitDuration', duration);
+        sessionStorage.setItem('prevPageExitEffect', effect);
+    }
+
+    // No Page-Exit
+    else {
+        sessionStorage.removeItem('prevPageExitDuration');
+        sessionStorage.removeItem('prevPageExitEffect');
+    }
+});
