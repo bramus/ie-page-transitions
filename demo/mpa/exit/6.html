@@ -8,11 +8,13 @@
     <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=6)">
 
     <!-- Randomize page looks -->
-    <script src="/shared/randomize.js"></script>
-    <script>randomize();</script>
+    <script type="module" blocking="render">
+        import { randomize } from '/shared/randomize.module.js';
+        randomize();
+    </script>
 
     <link rel="stylesheet" href="/dist/ie-page-transitions.css">
-    <script src="/dist/ie-page-transitions.mpa.js"></script>
+    <script src="/dist/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
 
     <style>
         @view-transition {

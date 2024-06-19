@@ -40,8 +40,10 @@ In browsers with no support, no effects will be run. The presence of `ie-page-tr
 
     ```html
     <link rel="stylesheet" href="/dist/ie-page-transitions.css">
-    <script src="/dist/ie-page-transitions.mpa.js"></script>
+    <script src="/dist/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
     ```
+
+    *Note: The script must be loaded as a module and must be set to block rendering.*
    
 3. Populate your pages with the meta tag(s) to define which effect(s) you want. _(See [Effect Configuration](#effect-configuration))_
 
@@ -65,15 +67,12 @@ Browser Support: Chrome 126+
 
 2. Inject the meta tags to define which effect you want. _(See [Effect Configuration](#effect-configuration))_
 
-3. If you have an entry effect on the first load, add the following blocking script to your page:
+3. If you have an entry effect on the first load, add the following render-blocking script to your page:
 
     ```html
-    <script>
-        document.documentElement.setAttribute('data-ie-page-transitions', '');
-        window.addEventListener('pagereveal', async (e) => {
-            const PageTransitions = await import('/dist/ie-page-transitions.spa.js');
-            PageTransitions.init();
-        });
+    <script type="module" blocking="render">
+        import { init } from '/dist/ie-page-transitions.spa.js';
+        init();
     </script>
     ```
 
@@ -82,12 +81,12 @@ Browser Support: Chrome 126+
 4. Instead of calling `document.startViewTransition(callback)` call `PageTransitions.startViewTransition(callback)`.
 
     ```js
-    import * as PageTransitions from '/dist/ie-page-transitions.spa.js';
+    import { startViewTransition } from '/dist/ie-page-transitions.spa.js';
 
-    $triggerElement.addEventListener('click', (e) => {
-        const t = PageTransitions.startViewTransition(() => {
-          // Update the DOM here
-        });
+    // Randomize page layout (wrapped in a startViewTransition)
+    $linkToNextPage.addEventListener('click', (e) => {
+        e.preventDefault();
+        startViewTransition(updateTheDOMSomehow);
     });
     ```
 

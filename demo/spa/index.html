@@ -6,29 +6,28 @@
     <title>IE Page Transitions (SPA)</title>
 
     <!-- Randomize page looks -->
-    <script src="/shared/randomize.js"></script>
-    <script>randomize();</script>
+    <script type="module" blocking="render">
+        import { randomize } from '/shared/randomize.module.js';
+        randomize();
+    </script>
 
     <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)">
     <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)">
 
     <link rel="stylesheet" href="/dist/ie-page-transitions.css">
-
-    <script>
-        document.documentElement.setAttribute('data-ie-page-transitions', '');
-        window.addEventListener('pagereveal', async (e) => {
-            const PageTransitions = await import('/dist/ie-page-transitions.spa.js');
-            PageTransitions.init();
-        });
+    <script type="module" blocking="render">
+        import { init } from '/dist/ie-page-transitions.spa.js';
+        init();
     </script>
 
     <script type="module">
-        import * as PageTransitions from '/dist/ie-page-transitions.spa.js';
+        import { startViewTransition } from '/dist/ie-page-transitions.spa.js';
+        import { randomize } from '/shared/randomize.module.js';
 
-        // On Click, call startPageTransition with a callback that updates the DOM
+        // Randomize page layout (wrapped in a startViewTransition)
         document.querySelector(`a[href="/spa"]`).addEventListener('click', (e) => {
             e.preventDefault();
-            const t = PageTransitions.startViewTransition(randomize);
+            startViewTransition(randomize);
         });
     </script>
 </head>

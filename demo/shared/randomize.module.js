@@ -36,3 +36,5 @@ const randomize = () => {
     document.documentElement.style.setProperty('color', colorInverted);
     document.documentElement.style.setProperty('font-size', `${fontSize}px`);
 }
+
+export { randomize }
