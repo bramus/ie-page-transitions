@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>IE Page Transitions (MPA)</title>
 
-    <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=1)">
-
-    <!-- Randomize page looks -->
+    <!-- Randomize page looks for demonstration purposes -->
     <script type="module" blocking="render">
         import { randomize } from '/shared/randomize.module.js';
         randomize();
     </script>
 
-    <link rel="stylesheet" href="/dist/ie-page-transitions.css">
-    <script src="/dist/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
-
+    <!-- Enable Cross-Document View Transitions -->
     <style>
         @view-transition {
             navigation: auto;
         }
     </style>
+
+    <!-- Enable IE Page Transitions (MPA) -->
+    <link rel="stylesheet" href="/dist/ie-page-transitions.css">
+    <script src="/dist/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
+
+    <!-- Configure IE Page Transitions Effect -->
+    <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=1)">
 </head>
 <body>
     <a href="/mpa">To MPA Index</a>

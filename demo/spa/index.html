@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>IE Page Transitions (SPA)</title>
 
-    <!-- Randomize page looks -->
+    <!-- Randomize page looks for demonstration purposes -->
     <script type="module" blocking="render">
         import { randomize } from '/shared/randomize.module.js';
         randomize();
     </script>
 
-    <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)">
-    <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)">
-
+    <!-- Enable IE Page Transitions Reveal Effect on first load -->
     <link rel="stylesheet" href="/dist/ie-page-transitions.css">
     <script type="module" blocking="render">
         import { init } from '/dist/ie-page-transitions.spa.js';
         init();
     </script>
 
+    <!-- IE Page Transitions (SPA) Usage Example -->
     <script type="module">
         import { startViewTransition } from '/dist/ie-page-transitions.spa.js';
         import { randomize } from '/shared/randomize.module.js';
@@ -30,6 +29,10 @@
             startViewTransition(randomize);
         });
     </script>
+
+    <!-- Configure IE Page Transitions Effect -->
+    <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)">
+    <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)">
 </head>
 <body>
     <a href="/spa">Randomize</a>
