@@ -1,6 +1,22 @@
 import { extractParamsFromMetaTag } from './ie-page-transitions.shared.js';
 
+const supportsViewTransitionsWithTypes = () => {
+    if (!document.startViewTransition) return false;
+    if (!CSS.supports('selector(:active-view-transition-type(yes)')) return false;
+
+    return true;
+}
+
+const supportsPageReveal = () => {
+    return window.PageRevealEvent !== undefined;
+}
+
 const startViewTransition = (update = () => {}) => {
+    if (!supportsViewTransitionsWithTypes()) {
+        update();
+        return;
+    };
+
     const $pageEnter = document.querySelector('meta[http-equiv="Page-Enter"]');
     const $pageExit = document.querySelector('meta[http-equiv="Page-Exit"]');
     const types = [];
@@ -32,6 +48,9 @@ const startViewTransition = (update = () => {}) => {
 };
 
 const init = () => {
+    if (!supportsViewTransitionsWithTypes()) return;
+    if (!supportsPageReveal()) return;
+
     const $pageEnter = document.querySelector('meta[http-equiv="Page-Enter"]');
 
     if ($pageEnter) {
