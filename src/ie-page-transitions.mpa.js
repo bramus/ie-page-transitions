@@ -21,7 +21,7 @@ window.addEventListener('pagereveal', async (e) => {
         }
         
         // Page-Enter Effect
-        if ($pageEnter) {
+        if ($pageEnter && $pageEnter.getAttribute('content')) {
             const { duration, effect } = extractParamsFromMetaTag($pageEnter);
 
             // Set proper types
@@ -40,7 +40,7 @@ window.addEventListener('pagereveal', async (e) => {
     
     // Page got accessed not coming from the same-origin or a reload or the like …
     else {
-        if ($pageEnter) {
+        if ($pageEnter && $pageEnter.getAttribute('content')) {
             // Hide body contents (old snapshot)
             document.documentElement.setAttribute('data-ie-page-transitions', '');
 
@@ -69,7 +69,7 @@ window.addEventListener('pageswap', async (e) => {
     const $pageExit = document.querySelector('meta[http-equiv="Page-Exit"]');
 
     // Page-Exit effect was set and VT is about to happen
-    if ($pageExit && e.viewTransition) {
+    if (e.viewTransition && $pageExit && $pageExit.getAttribute('content')) {
         const { duration, effect } = extractParamsFromMetaTag($pageExit);
 
         // Persist in storage

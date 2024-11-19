@@ -21,14 +21,16 @@ const startViewTransition = (update = () => {}) => {
     const $pageExit = document.querySelector('meta[http-equiv="Page-Exit"]');
     const types = [];
 
-    if ($pageEnter) {
+    // @TODO: Do a better check than just checking if [content] is set.
+    // A better check would check for the `revealTrans(Duration=XX,Transition=XX)` pattern
+    if ($pageEnter && $pageEnter.getAttribute('content')) {
         const { duration, effect } = extractParamsFromMetaTag($pageEnter);
         types.push('page-enter');
         types.push(`page-enter-effect-${effect}`);
         types.push(`page-enter-duration-${duration}`);
     }
 
-    if ($pageExit) {
+    if ($pageExit && $pageExit.getAttribute('content')) {
         const { duration, effect } = extractParamsFromMetaTag($pageExit);
         types.push('page-exit');
         types.push(`page-exit-effect-${effect}`);
