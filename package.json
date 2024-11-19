@@ -1,7 +1,7 @@
 {
-  "name": "ie-page-transitions.css",
+  "name": "ie-page-transitions",
   "version": "0.0.1",
-  "description": "Bringing back Internet Explorer’s Page Transitions Effects thanks to View Transitions",
+  "description": "Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API",
   "main": "src/ie-page-transitions.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
