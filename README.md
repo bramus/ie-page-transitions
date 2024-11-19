@@ -1,26 +1,51 @@
-# ie-page-transitions.css
+# ie-page-transitions
 
-Bringing back Internet Explorer’s Page Transitions Effects thanks to the View Transition API
+Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API
 
-## Internet Explorer’s Page Transition Effect
+## Internet Explorer’s Page Transitions
 
-The "Page Transition Effect" was a proprietary feature for Microsoft Internet Explorer 5.5 and above, where you could specify a transition between one page and another, similar to those found in slideshow presentations created with PowerPoint. The feature was deprecated as of Windows Internet Explorer 9.
+Microsoft Internet Explorer 4.0 and above featured a proprietary feature called [Interpage Transitions](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532847(v=vs.85)?redirectedfrom=MSDN#interpage-transitions). It allowed you to specify [a transition effect](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532853(v=vs.85)#transitions) to apply to the entire window as a Web page was loaded or exited.
 
-Transitions were specified using a meta tag in the `<head>` of a web page, for example:
+The feature worked best as of Microsoft Internet Explorer 5.5 which had a richer variety of optimized filters. The feature was eventually deprecated with the release of Windows Internet Explorer 9.
+
+Transitions were specified using a meta tag in the `<head>` of a web page. For example, the following snippet caused the [`Blinds` transition](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532976(v=vs.85)) to play when the user loaded the page and caused a [`Slide` transition](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms533087(v=vs.85)) to play when the user exited the page.
+
+```html
+<meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Blinds(Duration=4)" />
+<meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Slide(Duration=2.500,slidestyle='HIDE')" />
+```
+
+Four events could create instances of interpage transitions: `Page-Enter`, `Page-Exit`, `Site-Enter`, and `Site-Exit`.
+
+### The `RevealTrans` Filter
+
+The Page Transitions feature also came with a shorthand [the `DXImageTransform.Microsoft.RevealTrans` Filter](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms533085(v=vs.85)), which offered 23 predefined transitions mirrored from the effects found in Microsoft PowerPoint.
+
+Using one of these predefined effects was as easy as referring to its number – ranging from 0 to 22 – in the `revealTrans`’s filter `Transition` property. Using the value `23` randomly selected one of the 23 available effects.
+
+For example, using the following snippet caused Transition Effect number `7` – a vertical wipe from right to left – to play when the page was loaded.
 
 ```html
 <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=7)">
 ```
 
-Under the hood, this meta tag created [a `DXImageTransform.Microsoft.RevealTrans` filter](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms533085(v=vs.85)) applied to the document.
-
-This library brings back these effects to the Modern Web, thanks to the View Transition API.
+Under the hood the `revealTrans(Transition=7)` mapped to a `DXImageTransform.Microsoft.Blinds(direction='left', bands=1)` effect.
 
 ## Requirements
 
-For these effects to run, a browser with support for the View Transition API is required.
+For Page Transitions to run, a browser with built-in Page Transitions support or a browser with support for the View Transition API is required.
 
-In browsers with no support, no effects will be run. The presence of `ie-page-transitions.css` won’t affect these browsers.
+- SPA
+  - Chrome 125+
+  - Safari Technology Preview
+
+      *Note: Safari 18 is not supported as this library relies on [Selective View Transitions with Active Types](https://drafts.csswg.org/css-view-transitions-2/#selective-vt).*
+- MPA 
+  - IE 5.5 - 7.0 _(built-in)_
+  - Chrome 126+
+  - Safari Technology Preview _(flaky)_
+
+In browsers with no support for View Transitions, no effects will be run. The presence of `ie-page-transitions.css` won’t affect these browsers.
 
 ## Usage
 
@@ -43,8 +68,8 @@ In browsers with no support, no effects will be run. The presence of `ie-page-tr
     <script src="/dist/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
     ```
 
-    *Note: The script must be loaded as a module and must be set to block rendering.*
-   
+    *Note: The script **must** be loaded as a module and **must** be set to block rendering.*
+
 3. Populate your pages with the meta tag(s) to define which effect(s) you want. _(See [Effect Configuration](#effect-configuration))_
 
     ```html
@@ -52,12 +77,7 @@ In browsers with no support, no effects will be run. The presence of `ie-page-tr
     <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)">
     ```
 
-
-Browser Support: Chrome 126+
-
 ### SPA
-
-@TODO: Check and fix this
 
 1. Include `ie-page-transitions.css`
 
@@ -76,7 +96,7 @@ Browser Support: Chrome 126+
     </script>
     ```
 
-    *Note: There is no harm in adding this code when you don’t have an entry effect.*
+    *Note: There is no real harm in adding this code when you don’t have an entry effect.*
 
 4. Instead of calling `document.startViewTransition(callback)` call `PageTransitions.startViewTransition(callback)`.
 
@@ -90,9 +110,7 @@ Browser Support: Chrome 126+
     });
     ```
 
-Browser Support: Chrome 125+
 
-Note: Safari Technology Preview is not supported as this library relies on [Selective View Transitions with Active Types](https://drafts.csswg.org/css-view-transitions-2/#selective-vt).
 
 ## Effect Configuration
 
@@ -172,4 +190,4 @@ This library does not have the limitation. When both an exit and entry effect ar
     bore local 3000 --to bore.pub
     ```
 
-- Visit the exposed dev server in IE8, using something like browserstack or https://copy.sh/v86/?profile=windows2000
+- Visit the exposed dev server in IE8, using something like BrowserLing or https://copy.sh/v86/?profile=windows2000
