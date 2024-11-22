@@ -1,11 +1,4 @@
-import { extractParamsFromMetaTag } from './ie-page-transitions.shared.js';
-
-const supportsViewTransitionsWithTypes = () => {
-    if (!document.startViewTransition) return false;
-    if (!CSS.supports('selector(:active-view-transition-type(yes)')) return false;
-
-    return true;
-}
+import { extractParamsFromMetaTag, supportsViewTransitionsWithTypes } from './ie-page-transitions.shared.js';
 
 const supportsPageReveal = () => {
     return window.PageRevealEvent !== undefined;

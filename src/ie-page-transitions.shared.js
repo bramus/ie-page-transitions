@@ -25,3 +25,11 @@ const extractParamsFromMetaTag = ($metaTagElement) => {
     };
 }
 export { extractParamsFromMetaTag };
+
+const supportsViewTransitionsWithTypes = () => {
+    if (!document.startViewTransition) return false;
+    if (!CSS.supports('selector(:active-view-transition-type(yes)')) return false; // @TODO: Use a different check
+
+    return true;
+}
+export { supportsViewTransitionsWithTypes };

@@ -1,10 +1,13 @@
-import { extractParamsFromMetaTag } from './ie-page-transitions.shared.js';
+import { extractParamsFromMetaTag, supportsViewTransitionsWithTypes } from './ie-page-transitions.shared.js';
 
 // Configure the View Transition on PageReveal
 // If none exists, manually create one if the author specified a Page-Enter effect
 window.addEventListener('pagereveal', async (e) => {
     // Get Page-Enter Effect Meta Tag
     const $pageEnter = document.querySelector('meta[http-equiv="Page-Enter"]');
+
+    // This implementation needs View Transition Types
+    if (!supportsViewTransitionsWithTypes()) return;
 
     // View Transition is about to happen!
     if (e.viewTransition) {
