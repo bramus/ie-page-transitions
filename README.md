@@ -191,3 +191,7 @@ This library does not have the limitation. When both an exit and entry effect ar
     ```
 
 - Visit the exposed dev server in IE8, using something like BrowserLing or https://copy.sh/v86/?profile=windows2000
+
+## License
+
+See enclosed [LICENSE](./LICENSE)

@@ -10,7 +10,7 @@
     "build": "rm -rf demo/dist && mkdir demo/dist && cp -R -L src/* demo/dist"
   },
   "author": "Bramus <bramus@bram.us>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "serve": "^14.2.1"
   }
