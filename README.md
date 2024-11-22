@@ -195,3 +195,7 @@ This library does not have the limitation. When both an exit and entry effect ar
 ## License
 
 See enclosed [LICENSE](./LICENSE)
+
+## Disclaimer
+
+ This is not an officially supported Google product.
