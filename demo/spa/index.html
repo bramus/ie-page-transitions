@@ -23,19 +23,99 @@
         import { startViewTransition } from '/dist/ie-page-transitions.spa.js';
         import { randomize } from '/shared/randomize.module.js';
 
-        // Randomize page layout (wrapped in a startViewTransition)
-        document.querySelector(`a[href="/spa"]`).addEventListener('click', (e) => {
+        // Rasdf
+        document.querySelector(`form`).addEventListener('submit', (e) => {
             e.preventDefault();
+
+            const chosenEntryEffect = document.querySelector('select[name="Page-Enter"]').value;
+            if (chosenEntryEffect !== '') {
+                document.querySelector('meta[http-equiv="Page-Enter"]').setAttribute('content', `revealTrans(Duration=0.5,Transition=${chosenEntryEffect})`);
+            } else {
+                document.querySelector('meta[http-equiv="Page-Enter"]').setAttribute('content', '');
+            }
+
+            const chosenExitEffect = document.querySelector('select[name="Page-Exit"]').value;
+            if (chosenExitEffect !== '') {
+                document.querySelector('meta[http-equiv="Page-Exit"]').setAttribute('content', `revealTrans(Duration=0.5,Transition=${chosenExitEffect})`);
+            } else {
+                document.querySelector('meta[http-equiv="Page-Exit"]').setAttribute('content', '');
+            }
+
             startViewTransition(randomize);
         });
     </script>
+    <style>
+        a, form {
+            font-size: initial;
+            color: inherit;
+        }
+    </style>
 
     <!-- Configure IE Page Transitions Effect -->
     <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)">
     <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)">
 </head>
 <body>
-    <a href="/spa">Randomize</a>
+    <form action="">
+        <label for="exit-effect">Exit Effect (current view)</label>
+        <select name="Page-Exit" id="exit-effect">
+            <option value="">(none)</option>
+            <option value="0">0 - Box in</option>
+            <option value="1">1 – Box out</option>
+            <option value="2">2 – Circle in</option>
+            <option value="3">3 – Circle out</option>
+            <option value="4">4 – Wipe up</option>
+            <option value="5">5 – Wipe down</option>
+            <option value="6">6 – Wipe right</option>
+            <option value="7">7 – Wipe left</option>
+            <option value="8">8 – Vertical blinds</option>
+            <option value="9">9 – Horizontal blinds</option>
+            <option value="10">10 – Checkerboard across (❌)</option>
+            <option value="11">11 – Checkerboard down (❌)</option>
+            <option value="12">12 – Random dissolve (❌)</option>
+            <option value="13">13 – Split vertical in</option>
+            <option value="14">14 – Split vertical out</option>
+            <option value="15">15 – Split horizontal in (❌)</option>
+            <option value="16">16 – Split horizontal out (❌)</option>
+            <option value="17">17 – Strips left down</option>
+            <option value="18">18 – Strips left up</option>
+            <option value="19">19 – Strips right down</option>
+            <option value="20">20 – Strips right up</option>
+            <option value="21">21 – Random bars horizontal (❌)</option>
+            <option value="22">22 – Random bars vertical (❌)</option>
+            <option value="23" selected>23 – Random</option>
+        </select>
+
+        <label for="entry-effect">Entry Effect (next view)</label>
+        <select name="Page-Enter" id="entry-effect">
+            <option value="">(none)</option>
+            <option value="0">0 - Box in</option>
+            <option value="1">1 – Box out</option>
+            <option value="2">2 – Circle in</option>
+            <option value="3">3 – Circle out</option>
+            <option value="4">4 – Wipe up</option>
+            <option value="5">5 – Wipe down</option>
+            <option value="6">6 – Wipe right</option>
+            <option value="7">7 – Wipe left</option>
+            <option value="8">8 – Vertical blinds</option>
+            <option value="9">9 – Horizontal blinds</option>
+            <option value="10">10 – Checkerboard across (❌)</option>
+            <option value="11">11 – Checkerboard down (❌)</option>
+            <option value="12">12 – Random dissolve (❌)</option>
+            <option value="13">13 – Split vertical in</option>
+            <option value="14">14 – Split vertical out</option>
+            <option value="15">15 – Split horizontal in (❌)</option>
+            <option value="16">16 – Split horizontal out (❌)</option>
+            <option value="17">17 – Strips left down</option>
+            <option value="18">18 – Strips left up</option>
+            <option value="19">19 – Strips right down</option>
+            <option value="20">20 – Strips right up</option>
+            <option value="21">21 – Random bars horizontal (❌)</option>
+            <option value="22">22 – Random bars vertical (❌)</option>
+            <option value="23" selected>23 – Random</option>
+        </select>
+        <button>Go!</button>
+    </form>
 
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
