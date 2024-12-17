@@ -1,3 +1,8 @@
+/**
+ * Copyright 2024 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { extractParamsFromMetaTag, supportsViewTransitionsWithTypes } from './ie-page-transitions.shared.js';
 
 const supportsPageReveal = () => {

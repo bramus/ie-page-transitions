@@ -1,3 +1,8 @@
+/**
+ * Copyright 2024 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 const randomColor = () => {
     return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
 }

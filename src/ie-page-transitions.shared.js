@@ -1,3 +1,8 @@
+/**
+ * Copyright 2024 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 // Generate random number between min and max
 const randomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
