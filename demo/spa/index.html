@@ -24,7 +24,7 @@
     <script type="module" blocking="render">
         import { init } from '/dist/ie-page-transitions.spa.js';
 
-        if (navigation.activation.navigationType !== 'reload') {
+        if (!window.navigation || (window.navigation.activation.navigationType !== 'reload')) {
             init();
         }
     </script>
