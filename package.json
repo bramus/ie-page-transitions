@@ -2,7 +2,20 @@
   "name": "ie-page-transitions",
   "version": "0.0.1",
   "description": "Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API",
-  "main": "src/ie-page-transitions.css",
+  "exports": {
+    "./ie-page-transitions.css": {
+      "import": "./src/ie-page-transitions.css"
+    },
+    "./ie-page-transitions.shared.js": {
+      "import": "./src/ie-page-transitions.shared.js"
+    },
+    "./ie-page-transitions.mpa.js": {
+      "import": "./src/ie-page-transitions.mpa.js"
+    },
+    "./ie-page-transitions.spa.js": {
+      "import": "./src/ie-page-transitions.spa.js"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "npm run build",
