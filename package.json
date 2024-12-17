@@ -18,9 +18,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "npm run build",
     "start": "serve demo",
-    "build": "rm -rf demo/dist && mkdir demo/dist && cp -R -L src/* demo/dist"
+    "prestart": "npm run copy-demo-assets",
+    "copy-demo-assets": "rm -rf demo/dist && mkdir demo/dist && cp -R -L src/* demo/dist"
   },
   "author": "Bramus <bramus@bram.us>",
   "license": "Apache-2.0",
