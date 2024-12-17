@@ -20,11 +20,26 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "serve demo",
     "prestart": "npm run copy-demo-assets",
-    "copy-demo-assets": "rm -rf demo/dist && mkdir demo/dist && cp -R -L src/* demo/dist"
+    "copy-demo-assets": "rm -rf demo/dist && mkdir demo/dist && cp -R -L src/* demo/dist",
+    "prevent-dirty-tree": "exit $(git status --porcelain | wc -l)",
+    "prepack": "npm run prevent-dirty-tree",
+    "preversion": "npm run prevent-dirty-tree",
+    "release": "npm version $(semver $npm_package_version -i)",
+    "bump-version-patch-alpha": "npm version $(semver $npm_package_version -i prepatch --preid alpha)",
+    "bump-version-minor-alpha": "npm version $(semver $npm_package_version -i preminor --preid alpha)",
+    "bump-version-major-alpha": "npm version $(semver $npm_package_version -i premajor --preid alpha)",
+    "bump-version-patch-beta": "npm version $(semver $npm_package_version -i prepatch --preid beta)",
+    "bump-version-minor-beta": "npm version $(semver $npm_package_version -i preminor --preid beta)",
+    "bump-version-major-beta": "npm version $(semver $npm_package_version -i premajor --preid beta)",
+    "bump-version-patch": "npm version $(semver $npm_package_version -i patch)",
+    "bump-version-minor": "npm version $(semver $npm_package_version -i minor)",
+    "bump-version-major": "npm version $(semver $npm_package_version -i major)",
+    "bump-version": "npm version $(semver $npm_package_version -i)"
   },
   "author": "Bramus <bramus@bram.us>",
   "license": "Apache-2.0",
   "devDependencies": {
+    "semver": "^7.6.3",
     "serve": "^14.2.1"
   }
 }
