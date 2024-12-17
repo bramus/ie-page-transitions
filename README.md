@@ -37,13 +37,13 @@ For Page Transitions to run, a browser with built-in Page Transitions support or
 
 - SPA
   - Chrome 125+
-  - Safari Technology Preview
+  - Safari 18.2
 
-      *Note: Safari 18 is not supported as this library relies on [Selective View Transitions with Active Types](https://drafts.csswg.org/css-view-transitions-2/#selective-vt).*
+      *Note: Safari 18 and Safari 18.1 are **not** supported as this library relies on [Selective View Transitions with Active Types](https://drafts.csswg.org/css-view-transitions-2/#selective-vt).*
 - MPA 
   - IE 5.5 - 7.0 _(built-in)_
   - Chrome 126+
-  - Safari Technology Preview _(flaky)_
+  - Safari 18.2 _(buggy)_
 
 In browsers with no support for View Transitions, no effects will be run. The presence of `ie-page-transitions.css` won’t affect these browsers.
 
