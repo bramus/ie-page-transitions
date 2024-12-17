@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>IE Page Transitions (MPA)</title>
+
+    <!-- Randomize page looks for demonstration purposes -->
+    <script type="module" blocking="render">
+        import { randomize } from '/shared/randomize.module.js';
+        randomize();
+    </script>
+
+    <!-- Enable Cross-Document View Transitions -->
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+
+    <!-- Enable IE Page Transitions (MPA) -->
+    <link rel="stylesheet" href="/dist/ie-page-transitions.css">
+    <script src="/dist/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
+
+    <!-- Configure IE Page Transitions Effect -->
+    <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=21)">
+</head>
+<body>
+    <a href="/mpa">To MPA Index</a>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, maxime ex. Quibusdam delectus quisquam soluta molestiae magni? Consequuntur aut saepe officia esse! Distinctio, fugit doloribus error consequuntur eius a consectetur?</p>
+</body>
+</html>
