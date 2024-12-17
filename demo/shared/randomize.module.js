@@ -34,12 +34,7 @@ const invertColor = (hex) => {
 // Randomize page looks
 const randomize = () => {
     const color = randomColor();
-    const colorInverted = invertColor(color);
-    const fontSize = Math.floor(16 + (Math.random() * 32)) * 2;
-
-    document.documentElement.style.setProperty('background-color', color);
-    document.documentElement.style.setProperty('color', colorInverted);
-    document.documentElement.style.setProperty('font-size', `${fontSize}px`);
+    document.body.style.setProperty('background-color', color);
 }
 
 export { randomize }
