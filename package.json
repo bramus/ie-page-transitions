@@ -16,13 +16,17 @@
       "import": "./src/ie-page-transitions.spa.js"
     }
   },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "serve demo",
     "prestart": "npm run copy-demo-assets",
     "copy-demo-assets": "rm -rf demo/dist && mkdir demo/dist && cp -R -L src/* demo/dist",
     "prevent-dirty-tree": "exit $(git status --porcelain | wc -l)",
-    "prepack": "npm run prevent-dirty-tree",
     "preversion": "npm run prevent-dirty-tree",
     "release": "npm version $(semver $npm_package_version -i)",
     "bump-version-patch-alpha": "npm version $(semver $npm_package_version -i prepatch --preid alpha)",
