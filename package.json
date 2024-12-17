@@ -22,6 +22,7 @@
     "README.md"
   ],
   "scripts": {
+    "build": "echo \"There is no build step :)\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "serve demo",
     "prestart": "npm run copy-demo-assets",
