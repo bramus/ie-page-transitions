@@ -2,6 +2,11 @@
 
 Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API
 
+[![Source](https://img.shields.io/badge/Source-GitHub-2dba4e)](https://github.com/bramus/ie-page-transitions)
+[![npm](https://img.shields.io/npm/v/ie-page-transitions)](https://www.npmjs.com/package/ie-page-transitions)
+[![NPM](https://img.shields.io/npm/l/ie-page-transitions)](./LICENSE)
+[![Demo](https://img.shields.io/badge/demo-_Website-hotpink)](https://ie-page-transitions.netlify.app/)
+
 ## Internet Explorer’s Page Transitions
 
 Microsoft Internet Explorer 4.0 and above featured a proprietary feature called [Interpage Transitions](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532847(v=vs.85)?redirectedfrom=MSDN#interpage-transitions). It allowed you to specify [a transition effect](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532853(v=vs.85)#transitions) to apply to the entire window as a Web page was loaded or exited.
