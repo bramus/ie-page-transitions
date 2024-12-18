@@ -5,7 +5,7 @@ Bringing back Internet Explorer’s Page Transitions thanks to the View Transiti
 [![Source](https://img.shields.io/badge/Source-GitHub-2dba4e)](https://github.com/bramus/ie-page-transitions)
 [![npm](https://img.shields.io/npm/v/ie-page-transitions)](https://www.npmjs.com/package/ie-page-transitions)
 [![NPM](https://img.shields.io/npm/l/ie-page-transitions)](./LICENSE)
-[![Demo](https://img.shields.io/badge/demo-_Website-hotpink)](https://ie-page-transitions.netlify.app/)
+[![Demo](https://img.shields.io/badge/demo-_Website-hotpink)](https://page-transitions.style/)
 
 ## Internet Explorer’s Page Transitions
 
@@ -38,15 +38,14 @@ Under the hood the `revealTrans(Transition=7)` mapped to a `DXImageTransform.Mic
 
 ## Requirements
 
-For Page Transitions to run, a browser with built-in Page Transitions support or a browser with support for the View Transition API is required.
+For Page Transitions to run, a browser with built-in Page Transitions support or a browser with support for the View Transition API + [Selective View Transitions with Active Types](https://drafts.csswg.org/css-view-transitions-2/#selective-vt) is required.
 
 - SPA
   - Chrome 125+
   - Safari 18.2
 
-      *Note: Safari 18 and Safari 18.1 are **not** supported as this library relies on [Selective View Transitions with Active Types](https://drafts.csswg.org/css-view-transitions-2/#selective-vt).*
-- MPA 
-  - IE 5.5 - 7.0 _(built-in)_
+- MPA
+  - IE 5.5 - 8.0 _(built-in)_
   - Chrome 126+
   - Safari 18.2 _(buggy)_
 
@@ -114,8 +113,6 @@ In browsers with no support for View Transitions, no effects will be run. The pr
         startViewTransition(updateTheDOMSomehow);
     });
     ```
-
-
 
 ## Effect Configuration
 
@@ -195,7 +192,7 @@ This library does not have the limitation. When both an exit and entry effect ar
     bore local 3000 --to bore.pub
     ```
 
-- Visit the exposed dev server in IE8, using something like BrowserLing or https://copy.sh/v86/?profile=windows2000
+- Visit the exposed dev server in IE, using something like BrowserLing or https://copy.sh/v86/
 
 ## License
 
@@ -204,3 +201,4 @@ See enclosed [LICENSE](./LICENSE)
 ## Disclaimer
 
  This is not an officially supported Google product.
+ 
