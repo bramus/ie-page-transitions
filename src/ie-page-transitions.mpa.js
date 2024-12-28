@@ -68,6 +68,10 @@ window.addEventListener('pagereveal', async (e) => {
                     document.documentElement.removeAttribute('data-ie-page-transitions');
                 }
             });
+        } else {
+            // For some reason Safari doesn’t render the page contents on load.
+            // The line below enforces Safari to re-render.
+            document.documentElement.style.setProperty('--safari', 'bugfix');
         }
     }
 });
