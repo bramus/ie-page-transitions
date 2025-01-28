@@ -51,6 +51,20 @@ For Page Transitions to run, a browser with built-in Page Transitions support or
 
 In browsers with no support for View Transitions, no effects will be run. The presence of `ie-page-transitions.css` won’t affect these browsers.
 
+## Installation
+
+You can install this package from NPM:
+
+```
+npm install ie-page-transitions
+```
+
+Or, alternatively, load the files directly from a CDN:
+
+- unpkg: `https://unpkg.com/ie-page-transitions/` + `path/to/file.ext`
+- JSDelivr: `https://cdn.jsdelivr.net/npm/ie-page-transitions/` + `path/to/file.ext`
+- SkyPack: `https://cdn.skypack.dev/ie-page-transitions/` + `path/to/file.ext`
+
 ## Usage
 
 ### MPA
@@ -68,8 +82,8 @@ In browsers with no support for View Transitions, no effects will be run. The pr
 2. Include `ie-page-transitions.css` and `ie-page-transitions.mpa.js` on your pages.
 
     ```html
-    <link rel="stylesheet" href="/dist/ie-page-transitions.css">
-    <script src="/dist/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/src/ie-page-transitions.css">
+    <script src="https://unpkg.com/ie-page-transitions/src/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
     ```
 
     *Note: The script **must** be loaded as a module and **must** be set to block rendering.*
@@ -86,7 +100,7 @@ In browsers with no support for View Transitions, no effects will be run. The pr
 1. Include `ie-page-transitions.css`
 
     ```html
-    <link rel="stylesheet" href="/dist/ie-page-transitions.css">
+    <link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/src/ie-page-transitions.css">
     ```
 
 2. Inject the meta tags to define which effect you want. _(See [Effect Configuration](#effect-configuration))_
@@ -95,7 +109,7 @@ In browsers with no support for View Transitions, no effects will be run. The pr
 
     ```html
     <script type="module" blocking="render">
-        import { init } from '/dist/ie-page-transitions.spa.js';
+        import { init } from 'https://unpkg.com/ie-page-transitions/src/ie-page-transitions.spa.js';
         init();
     </script>
     ```
@@ -105,7 +119,7 @@ In browsers with no support for View Transitions, no effects will be run. The pr
 4. Instead of calling `document.startViewTransition(callback)` call `PageTransitions.startViewTransition(callback)`.
 
     ```js
-    import { startViewTransition } from '/dist/ie-page-transitions.spa.js';
+    import { startViewTransition } from 'https://unpkg.com/ie-page-transitions/src/ie-page-transitions.spa.js';
 
     // Randomize page layout (wrapped in a startViewTransition)
     $linkToNextPage.addEventListener('click', (e) => {
