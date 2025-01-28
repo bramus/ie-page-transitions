@@ -1,6 +1,6 @@
 {
   "name": "ie-page-transitions",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1",
   "description": "Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API",
   "exports": {
     "./": {
