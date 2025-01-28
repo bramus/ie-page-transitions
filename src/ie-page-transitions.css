@@ -11,9 +11,20 @@
     animation-timing-function: inherit;
 }
 
-/* Use linear timing for all */
-:root:active-view-transition-type(page-transition)::view-transition-group(root) {
-    animation-timing-function: linear;
+/* Set some generic VT defaults */
+:root:active-view-transition-type(page-transition) {
+    /* Use linear timing for all */
+    &::view-transition-group(root) {
+        animation-timing-function: linear;
+    }
+
+    /* Make sure they both appear on top */
+    &::view-transition-old(root) {
+        z-index: 1;
+    }
+    &::view-transition-new(root) {
+        z-index: 2;
+    }
 }
 
 /* Set default animation to a fade without blending */
@@ -101,14 +112,6 @@
     &::view-transition-new(root) {
         animation-delay: var(--ie-page-transitions-exit-duration, 1s);
         animation-duration: var(--ie-page-transitions-enter-duration, 1s);
-    }
-
-    /* Make sure they both appear on top */
-    &::view-transition-old(root) {
-        z-index: 1;
-    }
-    &::view-transition-new(root) {
-        z-index: 1;
     }
 }
 
