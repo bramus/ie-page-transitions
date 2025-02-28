@@ -113,6 +113,11 @@
         animation-delay: var(--ie-page-transitions-exit-duration, 1s);
         animation-duration: var(--ie-page-transitions-enter-duration, 1s);
     }
+
+    /* Allow control over the backdrop color */
+    &::view-transition {
+        background-color: var(--page-transitions-backdrop-color, transparent);
+    }
 }
 
 /* 0+1 – Rectangle */

@@ -180,6 +180,8 @@ In Internet Explorer it was not possible to have one page define an exit transit
 
 This library does not have the limitation. When both an exit and entry effect are set, these will run sequentially.
 
+To control the `background-color` of the `::view-transition` backdrop in between the exit and entry effects, set the `--page-transitions-backdrop-color` custom property on the `:root` element. If no color is set, the color `transparent` will be used.
+
 ## References
 
 - https://www.simplehtmlguide.com/pagetransitions.php

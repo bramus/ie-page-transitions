@@ -33,8 +33,11 @@ const invertColor = (hex) => {
 
 // Randomize page looks
 const randomize = () => {
-    const color = randomColor();
-    document.body.style.setProperty('background-color', color);
+    const oldColor = getComputedStyle(document.body).getPropertyValue('background-color');
+    document.documentElement.style.setProperty('--page-transitions-backdrop-color', oldColor);
+
+    const newColor = randomColor();
+    document.body.style.setProperty('background-color', newColor);
 }
 
 export { randomize }
