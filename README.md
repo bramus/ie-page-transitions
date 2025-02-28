@@ -64,6 +64,7 @@ Or, alternatively, load the files directly from a CDN:
 - unpkg: `https://unpkg.com/ie-page-transitions/` + `path/to/file.ext`
 - JSDelivr: `https://cdn.jsdelivr.net/npm/ie-page-transitions/` + `path/to/file.ext`
 - SkyPack: `https://cdn.skypack.dev/ie-page-transitions/` + `path/to/file.ext`
+- ESM.sh: `https://esm.sh/ie-page-transitions/` + `path/to/file.ext`
 
 ## Usage
 
