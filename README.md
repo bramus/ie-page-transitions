@@ -83,8 +83,8 @@ Or, alternatively, load the files directly from a CDN:
 2. Include `ie-page-transitions.css` and `ie-page-transitions.mpa.js` on your pages.
 
     ```html
-    <link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/src/ie-page-transitions.css">
-    <script src="https://unpkg.com/ie-page-transitions/src/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/ie-page-transitions.css">
+    <script src="https://unpkg.com/ie-page-transitions/ie-page-transitions.mpa.js" type="module" blocking="render"></script>
     ```
 
     *Note: The script **must** be loaded as a module and **must** be set to block rendering.*
@@ -101,7 +101,7 @@ Or, alternatively, load the files directly from a CDN:
 1. Include `ie-page-transitions.css`
 
     ```html
-    <link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/src/ie-page-transitions.css">
+    <link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/ie-page-transitions.css">
     ```
 
 2. Inject the meta tags to define which effect you want. _(See [Effect Configuration](#effect-configuration))_
@@ -110,7 +110,7 @@ Or, alternatively, load the files directly from a CDN:
 
     ```html
     <script type="module" blocking="render">
-        import { init } from 'https://unpkg.com/ie-page-transitions/src/ie-page-transitions.spa.js';
+        import { init } from 'https://unpkg.com/ie-page-transitions/ie-page-transitions.spa.js';
         init();
     </script>
     ```
@@ -120,7 +120,7 @@ Or, alternatively, load the files directly from a CDN:
 4. Instead of calling `document.startViewTransition(callback)` call `PageTransitions.startViewTransition(callback)`.
 
     ```js
-    import { startViewTransition } from 'https://unpkg.com/ie-page-transitions/src/ie-page-transitions.spa.js';
+    import { startViewTransition } from 'https://unpkg.com/ie-page-transitions/ie-page-transitions.spa.js';
 
     // Randomize page layout (wrapped in a startViewTransition)
     $linkToNextPage.addEventListener('click', (e) => {

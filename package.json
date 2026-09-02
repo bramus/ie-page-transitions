@@ -2,18 +2,22 @@
   "name": "ie-page-transitions",
   "version": "0.0.1",
   "description": "Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API",
+  "type": "module",
+  "main": "./src/ie-page-transitions.spa.js",
+  "module": "./src/ie-page-transitions.spa.js",
+  "style": "./src/ie-page-transitions.css",
   "exports": {
-    "./": {
-      "import": "./src/"
-    }
+    ".": "./src/ie-page-transitions.spa.js",
+    "./spa": "./src/ie-page-transitions.spa.js",
+    "./mpa": "./src/ie-page-transitions.mpa.js",
+    "./shared": "./src/ie-page-transitions.shared.js",
+    "./css": "./src/ie-page-transitions.css",
+    "./*": "./src/*"
   },
-  "files": [
-    "src",
-    "LICENSE",
-    "README.md"
-  ],
   "scripts": {
-    "build": "echo \"There is no build step :)\"",
+    "build": "node scripts/build.js",
+    "prepublishOnly": "if [ -z $PUBLISH ]; then echo '\\n🛑 ERROR: This package must be published using `npm run pub`\\n' && exit 1; fi",
+    "pub": "PUBLISH=true npm run build && npm publish ./dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "serve demo",
     "prestart": "npm run copy-demo-assets",
