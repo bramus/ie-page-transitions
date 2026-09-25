@@ -171,8 +171,8 @@ For example, to perform a pixel fade (aka. random dissolve) transition for 2 sec
 | ✅      | 18     | Strips left up         | New content is revealed from the lower left corner to the upper right. | DXImageTransform.Microsoft.Strips(motion='leftup')                      |
 | ✅      | 19     | Strips right down      | New content is revealed from the upper right corner to the lower left. | DXImageTransform.Microsoft.Strips(motion='rightdown')                   |
 | ✅      | 20     | Strips right up        | New content is revealed from the lower right corner to the upper left. | DXImageTransform.Microsoft.Strips(motion='rightup')                     |
-| ❌      | 21     | Random bars horizontal | Vertical Line Fade                                                     | DXImageTransform.Microsoft.RandomBars(orientation='horizontal')         |
-| ❌      | 22     | Random bars vertical   | Horizontal Line Fade                                                   | DXImageTransform.Microsoft.RandomBars(orientation='vertical')           |
+| ✅      | 21     | Random bars horizontal | Vertical Line Fade                                                     | DXImageTransform.Microsoft.RandomBars(orientation='horizontal')         |
+| ✅      | 22     | Random bars vertical   | Horizontal Line Fade                                                   | DXImageTransform.Microsoft.RandomBars(orientation='vertical')           |
 | ✅      | 23     | Random                 | Random                                                                 |                                                                         |
 
 ## Combining Exit and Entry Transitions
@@ -192,6 +192,8 @@ Some effects can be further customized by setting CSS Custom Properties on the `
 - **Checkerboard across (`10`) and Checkerboard down (`11`):**
   - `--page-transitions-checkerboard-columns`: Controls the number of columns across. Defaults to `10`.
   - `--page-transitions-checkerboard-rows`: Controls the number of rows down. Defaults to `10`.
+- **Random bars horizontal (`21`) and Random bars vertical (`22`):**
+  - `--page-transitions-random-bars-size`: Controls the thickness of each bar. Defaults to `4px`.
 
 ## References
 

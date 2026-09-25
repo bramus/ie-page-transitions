@@ -626,3 +626,140 @@
         mask-composite: intersect;
     }
 }
+
+/* 21+22 – Random Bars */
+@property --page-transitions-random-bars-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 4px;
+}
+@property --ie-page-transitions-random-bars-progress {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+}
+@property --ie-page-transitions-random-bars-direction {
+    syntax: "bottom | right";
+    inherits: false;
+    initial-value: bottom;
+}
+@keyframes random-bars {
+    from {
+        --ie-page-transitions-random-bars-progress: 0;
+    }
+    to {
+        --ie-page-transitions-random-bars-progress: 1;
+    }
+}
+:root:active-view-transition-type(page-enter-effect-21)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-21)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-22)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-22)::view-transition-old(root) {
+    --_s: var(--page-transitions-random-bars-size, 4px);
+    --_p: var(--ie-page-transitions-random-bars-progress);
+    --_dir: to var(--ie-page-transitions-random-bars-direction);
+    animation-name: random-bars;
+    mask:
+        /* Layer 0: bars 3i (17 bars, period = 51 * --_s) */
+        repeating-linear-gradient(
+            var(--_dir),
+            #000 calc(0 * var(--_s)), #000 calc(0 * var(--_s) + clamp(0px, (var(--_p) - 0.50) * 99999px, var(--_s))), transparent 0, transparent calc(3 * var(--_s)),
+            #000 calc(3 * var(--_s)), #000 calc(3 * var(--_s) + clamp(0px, (var(--_p) - 0.09) * 99999px, var(--_s))), transparent 0, transparent calc(6 * var(--_s)),
+            #000 calc(6 * var(--_s)), #000 calc(6 * var(--_s) + clamp(0px, (var(--_p) - 0.79) * 99999px, var(--_s))), transparent 0, transparent calc(9 * var(--_s)),
+            #000 calc(9 * var(--_s)), #000 calc(9 * var(--_s) + clamp(0px, (var(--_p) - 0.32) * 99999px, var(--_s))), transparent 0, transparent calc(12 * var(--_s)),
+            #000 calc(12 * var(--_s)), #000 calc(12 * var(--_s) + clamp(0px, (var(--_p) - 0.97) * 99999px, var(--_s))), transparent 0, transparent calc(15 * var(--_s)),
+            #000 calc(15 * var(--_s)), #000 calc(15 * var(--_s) + clamp(0px, (var(--_p) - 0.62) * 99999px, var(--_s))), transparent 0, transparent calc(18 * var(--_s)),
+            #000 calc(18 * var(--_s)), #000 calc(18 * var(--_s) + clamp(0px, (var(--_p) - 0.21) * 99999px, var(--_s))), transparent 0, transparent calc(21 * var(--_s)),
+            #000 calc(21 * var(--_s)), #000 calc(21 * var(--_s) + clamp(0px, (var(--_p) - 0.85) * 99999px, var(--_s))), transparent 0, transparent calc(24 * var(--_s)),
+            #000 calc(24 * var(--_s)), #000 calc(24 * var(--_s) + clamp(0px, (var(--_p) - 0.44) * 99999px, var(--_s))), transparent 0, transparent calc(27 * var(--_s)),
+            #000 calc(27 * var(--_s)), #000 calc(27 * var(--_s) + clamp(0px, (var(--_p) - 0.03) * 99999px, var(--_s))), transparent 0, transparent calc(30 * var(--_s)),
+            #000 calc(30 * var(--_s)), #000 calc(30 * var(--_s) + clamp(0px, (var(--_p) - 0.68) * 99999px, var(--_s))), transparent 0, transparent calc(33 * var(--_s)),
+            #000 calc(33 * var(--_s)), #000 calc(33 * var(--_s) + clamp(0px, (var(--_p) - 0.26) * 99999px, var(--_s))), transparent 0, transparent calc(36 * var(--_s)),
+            #000 calc(36 * var(--_s)), #000 calc(36 * var(--_s) + clamp(0px, (var(--_p) - 0.91) * 99999px, var(--_s))), transparent 0, transparent calc(39 * var(--_s)),
+            #000 calc(39 * var(--_s)), #000 calc(39 * var(--_s) + clamp(0px, (var(--_p) - 0.56) * 99999px, var(--_s))), transparent 0, transparent calc(42 * var(--_s)),
+            #000 calc(42 * var(--_s)), #000 calc(42 * var(--_s) + clamp(0px, (var(--_p) - 0.15) * 99999px, var(--_s))), transparent 0, transparent calc(45 * var(--_s)),
+            #000 calc(45 * var(--_s)), #000 calc(45 * var(--_s) + clamp(0px, (var(--_p) - 0.74) * 99999px, var(--_s))), transparent 0, transparent calc(48 * var(--_s)),
+            #000 calc(48 * var(--_s)), #000 calc(48 * var(--_s) + clamp(0px, (var(--_p) - 0.38) * 99999px, var(--_s))), transparent 0, transparent calc(51 * var(--_s))
+        ),
+        /* Layer 1: bars 3i + 1 (19 bars, period = 57 * --_s) */
+        repeating-linear-gradient(
+            var(--_dir),
+            transparent 0, transparent calc(1 * var(--_s)),
+            #000 calc(1 * var(--_s)), #000 calc(1 * var(--_s) + clamp(0px, (var(--_p) - 0.24) * 99999px, var(--_s))), transparent 0, transparent calc(4 * var(--_s)),
+            #000 calc(4 * var(--_s)), #000 calc(4 * var(--_s) + clamp(0px, (var(--_p) - 0.82) * 99999px, var(--_s))), transparent 0, transparent calc(7 * var(--_s)),
+            #000 calc(7 * var(--_s)), #000 calc(7 * var(--_s) + clamp(0px, (var(--_p) - 0.50) * 99999px, var(--_s))), transparent 0, transparent calc(10 * var(--_s)),
+            #000 calc(10 * var(--_s)), #000 calc(10 * var(--_s) + clamp(0px, (var(--_p) - 0.08) * 99999px, var(--_s))), transparent 0, transparent calc(13 * var(--_s)),
+            #000 calc(13 * var(--_s)), #000 calc(13 * var(--_s) + clamp(0px, (var(--_p) - 0.66) * 99999px, var(--_s))), transparent 0, transparent calc(16 * var(--_s)),
+            #000 calc(16 * var(--_s)), #000 calc(16 * var(--_s) + clamp(0px, (var(--_p) - 0.97) * 99999px, var(--_s))), transparent 0, transparent calc(19 * var(--_s)),
+            #000 calc(19 * var(--_s)), #000 calc(19 * var(--_s) + clamp(0px, (var(--_p) - 0.34) * 99999px, var(--_s))), transparent 0, transparent calc(22 * var(--_s)),
+            #000 calc(22 * var(--_s)), #000 calc(22 * var(--_s) + clamp(0px, (var(--_p) - 0.76) * 99999px, var(--_s))), transparent 0, transparent calc(25 * var(--_s)),
+            #000 calc(25 * var(--_s)), #000 calc(25 * var(--_s) + clamp(0px, (var(--_p) - 0.13) * 99999px, var(--_s))), transparent 0, transparent calc(28 * var(--_s)),
+            #000 calc(28 * var(--_s)), #000 calc(28 * var(--_s) + clamp(0px, (var(--_p) - 0.55) * 99999px, var(--_s))), transparent 0, transparent calc(31 * var(--_s)),
+            #000 calc(31 * var(--_s)), #000 calc(31 * var(--_s) + clamp(0px, (var(--_p) - 0.92) * 99999px, var(--_s))), transparent 0, transparent calc(34 * var(--_s)),
+            #000 calc(34 * var(--_s)), #000 calc(34 * var(--_s) + clamp(0px, (var(--_p) - 0.29) * 99999px, var(--_s))), transparent 0, transparent calc(37 * var(--_s)),
+            #000 calc(37 * var(--_s)), #000 calc(37 * var(--_s) + clamp(0px, (var(--_p) - 0.71) * 99999px, var(--_s))), transparent 0, transparent calc(40 * var(--_s)),
+            #000 calc(40 * var(--_s)), #000 calc(40 * var(--_s) + clamp(0px, (var(--_p) - 0.03) * 99999px, var(--_s))), transparent 0, transparent calc(43 * var(--_s)),
+            #000 calc(43 * var(--_s)), #000 calc(43 * var(--_s) + clamp(0px, (var(--_p) - 0.45) * 99999px, var(--_s))), transparent 0, transparent calc(46 * var(--_s)),
+            #000 calc(46 * var(--_s)), #000 calc(46 * var(--_s) + clamp(0px, (var(--_p) - 0.87) * 99999px, var(--_s))), transparent 0, transparent calc(49 * var(--_s)),
+            #000 calc(49 * var(--_s)), #000 calc(49 * var(--_s) + clamp(0px, (var(--_p) - 0.18) * 99999px, var(--_s))), transparent 0, transparent calc(52 * var(--_s)),
+            #000 calc(52 * var(--_s)), #000 calc(52 * var(--_s) + clamp(0px, (var(--_p) - 0.61) * 99999px, var(--_s))), transparent 0, transparent calc(55 * var(--_s)),
+            #000 calc(55 * var(--_s)), #000 calc(55 * var(--_s) + clamp(0px, (var(--_p) - 0.39) * 99999px, var(--_s))), transparent 0, transparent calc(57 * var(--_s))
+        ),
+        /* Layer 2: bars 3i + 2 (23 bars, period = 69 * --_s) */
+        repeating-linear-gradient(
+            var(--_dir),
+            transparent 0, transparent calc(2 * var(--_s)),
+            #000 calc(2 * var(--_s)), #000 calc(2 * var(--_s) + clamp(0px, (var(--_p) - 0.85) * 99999px, var(--_s))), transparent 0, transparent calc(5 * var(--_s)),
+            #000 calc(5 * var(--_s)), #000 calc(5 * var(--_s) + clamp(0px, (var(--_p) - 0.28) * 99999px, var(--_s))), transparent 0, transparent calc(8 * var(--_s)),
+            #000 calc(8 * var(--_s)), #000 calc(8 * var(--_s) + clamp(0px, (var(--_p) - 0.59) * 99999px, var(--_s))), transparent 0, transparent calc(11 * var(--_s)),
+            #000 calc(11 * var(--_s)), #000 calc(11 * var(--_s) + clamp(0px, (var(--_p) - 0.11) * 99999px, var(--_s))), transparent 0, transparent calc(14 * var(--_s)),
+            #000 calc(14 * var(--_s)), #000 calc(14 * var(--_s) + clamp(0px, (var(--_p) - 0.93) * 99999px, var(--_s))), transparent 0, transparent calc(17 * var(--_s)),
+            #000 calc(17 * var(--_s)), #000 calc(17 * var(--_s) + clamp(0px, (var(--_p) - 0.41) * 99999px, var(--_s))), transparent 0, transparent calc(20 * var(--_s)),
+            #000 calc(20 * var(--_s)), #000 calc(20 * var(--_s) + clamp(0px, (var(--_p) - 0.72) * 99999px, var(--_s))), transparent 0, transparent calc(23 * var(--_s)),
+            #000 calc(23 * var(--_s)), #000 calc(23 * var(--_s) + clamp(0px, (var(--_p) - 0.20) * 99999px, var(--_s))), transparent 0, transparent calc(26 * var(--_s)),
+            #000 calc(26 * var(--_s)), #000 calc(26 * var(--_s) + clamp(0px, (var(--_p) - 0.50) * 99999px, var(--_s))), transparent 0, transparent calc(29 * var(--_s)),
+            #000 calc(29 * var(--_s)), #000 calc(29 * var(--_s) + clamp(0px, (var(--_p) - 0.98) * 99999px, var(--_s))), transparent 0, transparent calc(32 * var(--_s)),
+            #000 calc(32 * var(--_s)), #000 calc(32 * var(--_s) + clamp(0px, (var(--_p) - 0.33) * 99999px, var(--_s))), transparent 0, transparent calc(35 * var(--_s)),
+            #000 calc(35 * var(--_s)), #000 calc(35 * var(--_s) + clamp(0px, (var(--_p) - 0.67) * 99999px, var(--_s))), transparent 0, transparent calc(38 * var(--_s)),
+            #000 calc(38 * var(--_s)), #000 calc(38 * var(--_s) + clamp(0px, (var(--_p) - 0.02) * 99999px, var(--_s))), transparent 0, transparent calc(41 * var(--_s)),
+            #000 calc(41 * var(--_s)), #000 calc(41 * var(--_s) + clamp(0px, (var(--_p) - 0.80) * 99999px, var(--_s))), transparent 0, transparent calc(44 * var(--_s)),
+            #000 calc(44 * var(--_s)), #000 calc(44 * var(--_s) + clamp(0px, (var(--_p) - 0.24) * 99999px, var(--_s))), transparent 0, transparent calc(47 * var(--_s)),
+            #000 calc(47 * var(--_s)), #000 calc(47 * var(--_s) + clamp(0px, (var(--_p) - 0.54) * 99999px, var(--_s))), transparent 0, transparent calc(50 * var(--_s)),
+            #000 calc(50 * var(--_s)), #000 calc(50 * var(--_s) + clamp(0px, (var(--_p) - 0.89) * 99999px, var(--_s))), transparent 0, transparent calc(53 * var(--_s)),
+            #000 calc(53 * var(--_s)), #000 calc(53 * var(--_s) + clamp(0px, (var(--_p) - 0.37) * 99999px, var(--_s))), transparent 0, transparent calc(56 * var(--_s)),
+            #000 calc(56 * var(--_s)), #000 calc(56 * var(--_s) + clamp(0px, (var(--_p) - 0.07) * 99999px, var(--_s))), transparent 0, transparent calc(59 * var(--_s)),
+            #000 calc(59 * var(--_s)), #000 calc(59 * var(--_s) + clamp(0px, (var(--_p) - 0.63) * 99999px, var(--_s))), transparent 0, transparent calc(62 * var(--_s)),
+            #000 calc(62 * var(--_s)), #000 calc(62 * var(--_s) + clamp(0px, (var(--_p) - 0.46) * 99999px, var(--_s))), transparent 0, transparent calc(65 * var(--_s)),
+            #000 calc(65 * var(--_s)), #000 calc(65 * var(--_s) + clamp(0px, (var(--_p) - 0.76) * 99999px, var(--_s))), transparent 0, transparent calc(68 * var(--_s)),
+            #000 calc(68 * var(--_s)), #000 calc(68 * var(--_s) + clamp(0px, (var(--_p) - 0.15) * 99999px, var(--_s))), transparent 0, transparent calc(69 * var(--_s))
+        ),
+        linear-gradient(#000 0 0);
+}
+
+/* 21 – Random bars horizontal */
+:root:active-view-transition-type(page-enter-effect-21) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-random-bars-direction: bottom;
+        mask-composite: add, add, intersect;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-21) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-random-bars-direction: bottom;
+        mask-composite: exclude;
+    }
+}
+
+/* 22 – Random bars vertical */
+:root:active-view-transition-type(page-enter-effect-22) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-random-bars-direction: right;
+        mask-composite: add, add, intersect;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-22) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-random-bars-direction: right;
+        mask-composite: exclude;
+    }
+}
