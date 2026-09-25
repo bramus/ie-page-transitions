@@ -490,6 +490,50 @@
     }
 }
 
+/* 15+16 - Horizontal Window */
+@keyframes split-horizontal {
+    from {
+        clip-path: polygon(0% 50%, 0% 50%, 100% 50%, 100% 50%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+}
+@keyframes split-horizontal--inverted {
+    from {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%, 0% 50%, 100% 50%, 100% 100%, 0% 100%);
+    }
+    to {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+}
+
+/* 15 – Horizontal Window Opening from middle to top/bottom */
+:root:active-view-transition-type(page-enter-effect-15) {
+    &::view-transition-new(root) {
+        animation-name: split-horizontal--inverted;
+        animation-direction: reverse;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-15) {
+    &::view-transition-old(root) {
+        animation-name: split-horizontal;
+        animation-direction: reverse;
+    }
+}
+
+/* 16 – Horizontal Window Closing from top/bottom to middle */
+:root:active-view-transition-type(page-enter-effect-16) {
+    &::view-transition-new(root) {
+        animation-name: split-horizontal;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-16) {
+    &::view-transition-old(root) {
+        animation-name: split-horizontal--inverted;
+    }
+}
+
 /* 17+18+19+20 - Strips */
 @property --ie-page-transitions-strips-progress {
     syntax: "<percentage>";

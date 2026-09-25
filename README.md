@@ -165,8 +165,8 @@ For example, to perform a pixel fade (aka. random dissolve) transition for 2 sec
 | ❌      | 12     | Random dissolve        | Pixel Fade                                                             | DXImageTransform.Microsoft.RandomDissolve                               |
 | ✅      | 13     | Split vertical in      | Vertical Window Opening from middle to sides                           | DXImageTransform.Microsoft.Barn(orientation='vertical', motion='in')    |
 | ✅      | 14     | Split vertical out     | Vertical Window Closing from sides to middle                           | DXImageTransform.Microsoft.Barn(orientation='vertical', motion='out')   |
-| ❌      | 15     | Split horizontal in    | Horizontal Window Opening from middle to top/bottom                    | DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='in')  |
-| ❌      | 16     | Split horizontal out   | Horizontal Window Closing from top/bottom to middle                    | DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='out') |
+| ✅      | 15     | Split horizontal in    | Horizontal Window Opening from middle to top/bottom                    | DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='in')  |
+| ✅      | 16     | Split horizontal out   | Horizontal Window Closing from top/bottom to middle                    | DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='out') |
 | ✅      | 17     | Strips left down       | New content is revealed from the upper left corner to the lower right. | DXImageTransform.Microsoft.Strips(motion='leftdown')                    |
 | ✅      | 18     | Strips left up         | New content is revealed from the lower left corner to the upper right. | DXImageTransform.Microsoft.Strips(motion='leftup')                      |
 | ✅      | 19     | Strips right down      | New content is revealed from the upper right corner to the lower left. | DXImageTransform.Microsoft.Strips(motion='rightdown')                   |
