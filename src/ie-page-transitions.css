@@ -302,6 +302,11 @@
 }
 
 /* 8+9 – Blinds */
+@property --page-transitions-blinds-bands {
+    syntax: "<integer>";
+    inherits: true;
+    initial-value: 6;
+}
 @property --ie-page-transitions-blinds-actual-size {
     syntax: "<length>";
     inherits: false;
@@ -342,14 +347,14 @@
 /* 8 – Horizontal Blinds */
 :root:active-view-transition-type(page-enter-effect-8) {
     &::view-transition-new(root) {
-        --ie-page-transitions-blinds-target-size: calc(100vw / 6);
+        --ie-page-transitions-blinds-target-size: calc(100vw / var(--page-transitions-blinds-bands, 6));
         --ie-page-transitions-blinds-target-direction: right;
         mask-composite: intersect;
     }
 }
 :root:active-view-transition-type(page-exit-effect-8) {
     &::view-transition-old(root) {
-        --ie-page-transitions-blinds-target-size: calc(100vw / 6);
+        --ie-page-transitions-blinds-target-size: calc(100vw / var(--page-transitions-blinds-bands, 6));
         --ie-page-transitions-blinds-target-direction: right;
         mask-composite: exclude;
     }
@@ -358,14 +363,14 @@
 /* 9 – Vertical Blinds */
 :root:active-view-transition-type(page-enter-effect-9) {
     &::view-transition-new(root) {
-        --ie-page-transitions-blinds-target-size: calc(100vh / 6);
+        --ie-page-transitions-blinds-target-size: calc(100vh / var(--page-transitions-blinds-bands, 6));
         --ie-page-transitions-blinds-target-direction: bottom;
         mask-composite: intersect;
     }
 }
 :root:active-view-transition-type(page-exit-effect-9) {
     &::view-transition-old(root) {
-        --ie-page-transitions-blinds-target-size: calc(100vh / 6);
+        --ie-page-transitions-blinds-target-size: calc(100vh / var(--page-transitions-blinds-bands, 6));
         --ie-page-transitions-blinds-target-direction: bottom;
         mask-composite: exclude;
     }
