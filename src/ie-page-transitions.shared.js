@@ -10,7 +10,7 @@ const randomInteger = (min, max) => {
 
 // Generate a random transition effect number
 const randomTransition = () => {
-    const candidates = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 14, 17, 18, 19, 20];
+    const candidates = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 17, 18, 19, 20];
     return candidates[randomInteger(0, candidates.length-1)];
 }
 

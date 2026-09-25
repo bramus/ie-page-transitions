@@ -160,8 +160,8 @@ For example, to perform a pixel fade (aka. random dissolve) transition for 2 sec
 | ✅      | 7      | Wipe left              | Vertical wipe from right to left                                       | DXImageTransform.Microsoft.Blinds(direction='left', bands=1)            |
 | ✅      | 8      | Vertical blinds        | Vertical Blinds from left to right                                     | DXImageTransform.Microsoft.Blinds(direction='right')                    |
 | ✅      | 9      | Horizontal blinds      | Horizontal blinds from top to bottom                                   | DXImageTransform.Microsoft.Blinds(direction='down')                     |
-| ❌      | 10     | Checkerboard across    | Box Blinds from left to right                                          | DXImageTransform.Microsoft.CheckerBoard(direction='right')              |
-| ❌      | 11     | Checkerboard down      | Box Blinds from top to bottom                                          | DXImageTransform.Microsoft.CheckerBoard(direction='down')               |
+| ✅      | 10     | Checkerboard across    | Box Blinds from left to right                                          | DXImageTransform.Microsoft.CheckerBoard(direction='right')              |
+| ✅      | 11     | Checkerboard down      | Box Blinds from top to bottom                                          | DXImageTransform.Microsoft.CheckerBoard(direction='down')               |
 | ❌      | 12     | Random dissolve        | Pixel Fade                                                             | DXImageTransform.Microsoft.RandomDissolve                               |
 | ✅      | 13     | Split vertical in      | Vertical Window Opening from middle to sides                           | DXImageTransform.Microsoft.Barn(orientation='vertical', motion='in')    |
 | ✅      | 14     | Split vertical out     | Vertical Window Closing from sides to middle                           | DXImageTransform.Microsoft.Barn(orientation='vertical', motion='out')   |

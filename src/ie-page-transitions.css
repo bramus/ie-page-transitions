@@ -371,6 +371,76 @@
     }
 }
 
+/* 10+11 – Checkerboard */
+@property --page-transitions-checkerboard-columns {
+    syntax: "<integer>";
+    inherits: true;
+    initial-value: 10;
+}
+@property --page-transitions-checkerboard-rows {
+    syntax: "<integer>";
+    inherits: true;
+    initial-value: 10;
+}
+@property --ie-page-transitions-checkerboard-progress {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+}
+@keyframes checkerboard {
+    from {
+        --ie-page-transitions-checkerboard-progress: 0%;
+    }
+    to {
+        --ie-page-transitions-checkerboard-progress: 100%;
+    }
+}
+:root:active-view-transition-type(page-enter-effect-10)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-10)::view-transition-old(root),
+:root:active-view-transition-type(page-enter-effect-11)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-11)::view-transition-old(root) {
+    --ie-page-transitions-checkerboard-box-width: calc(100vw / var(--page-transitions-checkerboard-columns, 10));
+    --ie-page-transitions-checkerboard-box-height: calc(100vh / var(--page-transitions-checkerboard-rows, 10));
+    --ie-page-transitions-checkerboard-gradient: conic-gradient(
+        at var(--ie-page-transitions-checkerboard-x, 50%) var(--ie-page-transitions-checkerboard-y, 50%),
+        transparent 270deg,
+        #000 0
+    );
+    animation-name: checkerboard;
+    mask:
+        var(--ie-page-transitions-checkerboard-gradient) 0 0 / calc(var(--ie-page-transitions-checkerboard-box-width) * 2) calc(var(--ie-page-transitions-checkerboard-box-height) * 2),
+        var(--ie-page-transitions-checkerboard-gradient) var(--ie-page-transitions-checkerboard-box-width) var(--ie-page-transitions-checkerboard-box-height) / calc(var(--ie-page-transitions-checkerboard-box-width) * 2) calc(var(--ie-page-transitions-checkerboard-box-height) * 2),
+        linear-gradient(#000 0 0);
+}
+
+/* 10 – Checkerboard across */
+:root:active-view-transition-type(page-enter-effect-10) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-checkerboard-x: var(--ie-page-transitions-checkerboard-progress);
+        mask-composite: add, intersect;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-10) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-checkerboard-x: var(--ie-page-transitions-checkerboard-progress);
+        mask-composite: exclude;
+    }
+}
+
+/* 11 – Checkerboard down */
+:root:active-view-transition-type(page-enter-effect-11) {
+    &::view-transition-new(root) {
+        --ie-page-transitions-checkerboard-y: var(--ie-page-transitions-checkerboard-progress);
+        mask-composite: add, intersect;
+    }
+}
+:root:active-view-transition-type(page-exit-effect-11) {
+    &::view-transition-old(root) {
+        --ie-page-transitions-checkerboard-y: var(--ie-page-transitions-checkerboard-progress);
+        mask-composite: exclude;
+    }
+}
+
 /* 13+14 - Vertical Window */
 @keyframes split-vertical {
     from {
