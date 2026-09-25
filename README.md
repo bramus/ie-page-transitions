@@ -162,7 +162,7 @@ For example, to perform a pixel fade (aka. random dissolve) transition for 2 sec
 | ✅      | 9      | Horizontal blinds      | Horizontal blinds from top to bottom                                   | DXImageTransform.Microsoft.Blinds(direction='down')                     |
 | ✅      | 10     | Checkerboard across    | Box Blinds from left to right                                          | DXImageTransform.Microsoft.CheckerBoard(direction='right')              |
 | ✅      | 11     | Checkerboard down      | Box Blinds from top to bottom                                          | DXImageTransform.Microsoft.CheckerBoard(direction='down')               |
-| ❌      | 12     | Random dissolve        | Pixel Fade                                                             | DXImageTransform.Microsoft.RandomDissolve                               |
+| ✅      | 12     | Random dissolve        | Pixel Fade                                                             | DXImageTransform.Microsoft.RandomDissolve                               |
 | ✅      | 13     | Split vertical in      | Vertical Window Opening from middle to sides                           | DXImageTransform.Microsoft.Barn(orientation='vertical', motion='in')    |
 | ✅      | 14     | Split vertical out     | Vertical Window Closing from sides to middle                           | DXImageTransform.Microsoft.Barn(orientation='vertical', motion='out')   |
 | ✅      | 15     | Split horizontal in    | Horizontal Window Opening from middle to top/bottom                    | DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='in')  |
@@ -192,6 +192,8 @@ Some effects can be further customized by setting CSS Custom Properties on the `
 - **Checkerboard across (`10`) and Checkerboard down (`11`):**
   - `--page-transitions-checkerboard-columns`: Controls the number of columns across. Defaults to `10`.
   - `--page-transitions-checkerboard-rows`: Controls the number of rows down. Defaults to `10`.
+- **Random dissolve (`12`):**
+  - `--page-transitions-random-dissolve-size`: Controls the size of each dissolved pixel. Defaults to `4px`.
 - **Random bars horizontal (`21`) and Random bars vertical (`22`):**
   - `--page-transitions-random-bars-size`: Controls the thickness of each bar. Defaults to `4px`.
 

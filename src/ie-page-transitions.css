@@ -446,6 +446,104 @@
     }
 }
 
+/* 12 – Random dissolve */
+@property --page-transitions-random-dissolve-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 4px;
+}
+@property --ie-page-transitions-random-dissolve-progress {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+}
+@keyframes random-dissolve {
+    from {
+        --ie-page-transitions-random-dissolve-progress: 0;
+    }
+    to {
+        --ie-page-transitions-random-dissolve-progress: 1;
+    }
+}
+:root:active-view-transition-type(page-enter-effect-12)::view-transition-new(root),
+:root:active-view-transition-type(page-exit-effect-12)::view-transition-old(root) {
+    --_s: var(--page-transitions-random-dissolve-size, 4px);
+    --_p: var(--ie-page-transitions-random-dissolve-progress);
+    --_t5: calc(5 * var(--_s)) calc(5 * var(--_s));
+    --_t6: calc(6 * var(--_s)) calc(6 * var(--_s));
+    animation-name: random-dissolve;
+    mask:
+        /* 5x5 tile (25 pixels, period = 5 * --_s) */
+        conic-gradient(at var(--_s) clamp(0px, (0.21 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(0 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.96 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(0 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.49 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(0 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.01 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(0 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.12 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(0 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.01 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(1 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.05 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(1 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.29 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(1 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.74 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(1 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.61 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(1 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.88 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(2 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.44 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(2 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.03 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(2 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.09 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(2 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.18 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(2 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.14 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(3 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.25 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(3 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.67 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(3 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.55 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(3 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.01 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(3 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.38 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(4 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.02 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(4 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.07 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(4 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.34 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(4 * var(--_s)) / var(--_t5),
+        conic-gradient(at var(--_s) clamp(0px, (0.81 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(4 * var(--_s)) / var(--_t5),
+        /* 6x6 tile (36 pixels, period = 6 * --_s) */
+        conic-gradient(at var(--_s) clamp(0px, (0.29 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(0 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.02 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(0 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.77 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(0 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.09 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(0 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.54 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(0 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.01 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(5 * var(--_s)) calc(0 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.63 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(1 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.16 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(1 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.01 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(1 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.43 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(1 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.04 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(1 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.92 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(5 * var(--_s)) calc(1 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.02 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(2 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.81 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(2 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.24 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(2 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.07 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(2 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.67 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(2 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.12 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(5 * var(--_s)) calc(2 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.46 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(3 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.06 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(3 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.58 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(3 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.97 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(3 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.01 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(3 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.32 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(5 * var(--_s)) calc(3 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.14 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(4 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.72 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(4 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.01 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(4 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.26 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(4 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.50 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(4 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.03 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(5 * var(--_s)) calc(4 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.87 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(0 * var(--_s)) calc(5 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.10 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(1 * var(--_s)) calc(5 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.39 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(2 * var(--_s)) calc(5 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.19 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(3 * var(--_s)) calc(5 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.36 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(4 * var(--_s)) calc(5 * var(--_s)) / var(--_t6),
+        conic-gradient(at var(--_s) clamp(0px, (0.21 - var(--_p)) * 99999px, var(--_s)), #000 270deg, transparent 0) calc(5 * var(--_s)) calc(5 * var(--_s)) / var(--_t6);
+    mask-composite: intersect;
+}
+:root:active-view-transition-type(page-exit-effect-12) {
+    &::view-transition-old(root) {
+        animation-direction: reverse;
+    }
+}
+
 /* 13+14 - Vertical Window */
 @keyframes split-vertical {
     from {
