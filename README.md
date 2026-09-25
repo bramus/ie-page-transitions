@@ -175,13 +175,23 @@ For example, to perform a pixel fade (aka. random dissolve) transition for 2 sec
 | ❌      | 22     | Random bars vertical   | Horizontal Line Fade                                                   | DXImageTransform.Microsoft.RandomBars(orientation='vertical')           |
 | ✅      | 23     | Random                 | Random                                                                 |                                                                         |
 
-## Differences
+## Combining Exit and Entry Transitions
 
 In Internet Explorer it was not possible to have one page define an exit transition and the other page an entry transition. When having both an exit and entry effect, the two would conflict, resulting in no transition happening at all.
 
 This library does not have the limitation. When both an exit and entry effect are set, these will run sequentially.
 
 To control the `background-color` of the `::view-transition` backdrop in between the exit and entry effects, set the `--page-transitions-backdrop-color` custom property on the `:root` element. If no color is set, the color `transparent` will be used.
+
+## Effect Configuration
+
+Some effects can be further customized by setting CSS Custom Properties on the `:root` element:
+
+- **Vertical blinds (`8`) and Horizontal blinds (`9`):**
+  - `--page-transitions-blinds-bands`: Controls the number of blind bands. Defaults to `6`.
+- **Checkerboard across (`10`) and Checkerboard down (`11`):**
+  - `--page-transitions-checkerboard-columns`: Controls the number of columns across. Defaults to `10`.
+  - `--page-transitions-checkerboard-rows`: Controls the number of rows down. Defaults to `10`.
 
 ## References
 
