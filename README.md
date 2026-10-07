@@ -95,7 +95,7 @@ Customize effects on `:root`:
 
 Requires built-in Page Transitions support or support for the View Transition API + [Selective View Transitions with Active Types](https://drafts.csswg.org/css-view-transitions-2/#selective-vt):
 
-- **SPA:** Chrome 125+, Safari 18.2+
+- **SPA:** Chrome 125+, Safari 18.2+, Firefox 147+
 - **MPA:** IE 5.5 – 8.0 _(built-in)_, Chrome 126+, Safari 18.2+
 
 ## License

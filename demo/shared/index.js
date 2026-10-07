@@ -92,7 +92,7 @@ class IEPageTransitionsDemoApp {
       text.append(
         strong,
         document.createTextNode(
-          'Open this page in Chrome 126+ or Safari 18.2+ (or Internet Explorer 5.5–8.0 for the MPA demo!) to see the transition effects in action.'
+          'Open this page in Chrome 125+, Safari 18.2+, or Firefox 147+ (or Internet Explorer 5.5–8.0 for the MPA demo!) to see the transition effects in action.'
         )
       );
     }
