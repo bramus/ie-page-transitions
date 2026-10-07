@@ -25,25 +25,31 @@
     "copy-demo-assets": "rm -rf demo/dist && mkdir demo/dist && cp -R -L src/* demo/dist",
     "capture-video": "node scripts/capture-video.mjs",
     "prevent-dirty-tree": "exit $(git status --porcelain | wc -l)",
-    "preversion": "npm run prevent-dirty-tree",
-    "release": "npm version $(semver $npm_package_version -i)",
-    "bump-version-patch-alpha": "npm version $(semver $npm_package_version -i prepatch --preid alpha)",
-    "bump-version-minor-alpha": "npm version $(semver $npm_package_version -i preminor --preid alpha)",
-    "bump-version-major-alpha": "npm version $(semver $npm_package_version -i premajor --preid alpha)",
-    "bump-alpha": "npm version $(semver $npm_package_version -i prerelease)",
-    "bump-version-patch-beta": "npm version $(semver $npm_package_version -i prepatch --preid beta)",
-    "bump-version-minor-beta": "npm version $(semver $npm_package_version -i preminor --preid beta)",
-    "bump-version-major-beta": "npm version $(semver $npm_package_version -i premajor --preid beta)",
-    "bump-beta": "npm version $(semver $npm_package_version -i prerelease)",
-    "bump-version-patch": "npm version $(semver $npm_package_version -i patch)",
-    "bump-version-minor": "npm version $(semver $npm_package_version -i minor)",
-    "bump-version-major": "npm version $(semver $npm_package_version -i major)",
-    "bump-version": "npm version $(semver $npm_package_version -i)"
+    "preversion": "npm run prevent-dirty-tree"
   },
-  "author": "Bramus <bramus@bram.us>",
+  "author": {
+    "name": "Bramus Van Damme",
+    "email": "bramus@bram.us",
+    "url": "https://www.bram.us/"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bramus/ie-page-transitions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bramus/ie-page-transitions/issues"
+  },
+  "homepage": "https://page-transitions.style",
+  "keywords": [
+    "animation",
+    "css",
+    "page-transition",
+    "page-transitions",
+    "view-transition-api",
+    "view-transitions"
+  ],
   "devDependencies": {
-    "semver": "^7.6.3",
     "serve": "^14.2.1"
   }
 }
