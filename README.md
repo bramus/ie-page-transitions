@@ -42,12 +42,12 @@ For Page Transitions to run, a browser with built-in Page Transitions support or
 
 - SPA
   - Chrome 125+
-  - Safari 18.2
+  - Safari 18.2+
 
 - MPA
   - IE 5.5 - 8.0 _(built-in)_
   - Chrome 126+
-  - Safari 18.2 _(buggy)_
+  - Safari 18.2+
 
 In browsers with no support for View Transitions, no effects will be run. The presence of `ie-page-transitions.css` won’t affect these browsers.
 
