@@ -15,6 +15,7 @@
     "./*": "./src/*"
   },
   "scripts": {
+    "deploy": "netlify deploy --prod",
     "build": "node scripts/build.js",
     "prepublishOnly": "if [ -z $PUBLISH ]; then echo '\\n🛑 ERROR: This package must be published using `npm run pub`\\n' && exit 1; fi",
     "pub": "PUBLISH=true npm run build && npm publish ./dist",
