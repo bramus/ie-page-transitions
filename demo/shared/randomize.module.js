@@ -14,7 +14,7 @@ const invertColor = (hex) => {
     }
     // convert 3-digit hex to 6-digits.
     if (hex.length === 3) {
-        hex = hex[0] + hex[0] + [1] + hex[1] + hex[2] + hex[2];
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
     }
     if (hex.length !== 6) {
         throw new Error('Invalid HEX color.');
@@ -50,9 +50,20 @@ const cycleContentSlide = (forceIndex = null) => {
     });
 }
 
+// Persist the outgoing page’s background color on Cross-Document (MPA) navigations
+window.addEventListener('pageswap', (e) => {
+    if (e.viewTransition) {
+        sessionStorage.setItem('prevBackgroundColor', getComputedStyle(document.body).getPropertyValue('background-color'));
+    } else {
+        sessionStorage.removeItem('prevBackgroundColor');
+    }
+});
+
 // Randomize page looks (and cycle content slides if present)
 const randomize = () => {
-    const oldColor = getComputedStyle(document.body).getPropertyValue('background-color');
+    const oldColor = sessionStorage.getItem('prevBackgroundColor') || getComputedStyle(document.body).getPropertyValue('background-color');
+    sessionStorage.removeItem('prevBackgroundColor');
+
     document.documentElement.style.setProperty('--page-transitions-backdrop-color', oldColor);
 
     const newColor = randomColor();
