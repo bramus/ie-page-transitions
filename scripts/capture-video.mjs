@@ -1,8 +1,3 @@
-/**
- * Copyright 2024 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { spawn, execFileSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import http from 'node:http';

@@ -41,7 +41,7 @@
     "bump-version": "npm version $(semver $npm_package_version -i)"
   },
   "author": "Bramus <bramus@bram.us>",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "devDependencies": {
     "semver": "^7.6.3",
     "serve": "^14.2.1"

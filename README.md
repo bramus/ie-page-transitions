@@ -227,9 +227,9 @@ Some effects can be further customized by setting CSS Custom Properties on the `
 
 ## License
 
-See enclosed [LICENSE](./LICENSE)
+`ie-page-transitions` is released under the MIT public license. See the enclosed [LICENSE](./LICENSE) for details.
+
 
 ## Disclaimer
 
- This is not an officially supported Google product.
- 
+ This is not an officially supported Google product. I just happen to work there.
