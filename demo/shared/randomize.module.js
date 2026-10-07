@@ -14,7 +14,7 @@ const invertColor = (hex) => {
     }
     // convert 3-digit hex to 6-digits.
     if (hex.length === 3) {
-        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+        hex = hex[0] + hex[0] + [1] + hex[1] + hex[2] + hex[2];
     }
     if (hex.length !== 6) {
         throw new Error('Invalid HEX color.');
@@ -31,13 +31,34 @@ const invertColor = (hex) => {
     return "#" + r.padStart(2, '0') + g.padStart(2, '0') + b.padStart(2, '0');
 }
 
-// Randomize page looks
+let currentSlideIndex = -1;
+
+const cycleContentSlide = (forceIndex = null) => {
+    const slides = document.querySelectorAll('.content-slide');
+    if (!slides.length) return;
+
+    if (typeof forceIndex === 'number') {
+        currentSlideIndex = ((forceIndex % slides.length) + slides.length) % slides.length;
+    } else if (currentSlideIndex === -1) {
+        currentSlideIndex = Math.floor(Math.random() * slides.length);
+    } else {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    }
+
+    slides.forEach((slide, idx) => {
+        slide.hidden = idx !== currentSlideIndex;
+    });
+}
+
+// Randomize page looks (and cycle content slides if present)
 const randomize = () => {
     const oldColor = getComputedStyle(document.body).getPropertyValue('background-color');
     document.documentElement.style.setProperty('--page-transitions-backdrop-color', oldColor);
 
     const newColor = randomColor();
     document.body.style.setProperty('background-color', newColor);
+
+    cycleContentSlide();
 }
 
-export { randomize }
+export { randomize, cycleContentSlide }

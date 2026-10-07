@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="55%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+    <linearGradient id="sea2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" rx="16" fill="url(#sky2)"/>
+  <!-- Giant Setting Sun -->
+  <circle cx="300" cy="220" r="95" fill="#fef08a" opacity="0.95"/>
+  <!-- Clouds -->
+  <g fill="#ffffff" opacity="0.85">
+    <rect x="60" y="70" width="130" height="28" rx="14"/>
+    <circle cx="100" cy="70" r="22"/>
+    <circle cx="140" cy="65" r="26"/>
+    <rect x="420" y="95" width="120" height="24" rx="12"/>
+    <circle cx="460" cy="95" r="18"/>
+    <circle cx="495" cy="90" r="22"/>
+  </g>
+  <!-- Ocean -->
+  <rect x="0" y="250" width="600" height="150" rx="12" fill="url(#sea2)"/>
+  <!-- Sun reflection stripes -->
+  <rect x="240" y="265" width="120" height="8" rx="4" fill="#fde047" opacity="0.8"/>
+  <rect x="255" y="285" width="90" height="7" rx="3.5" fill="#fde047" opacity="0.7"/>
+  <rect x="270" y="305" width="60" height="6" rx="3" fill="#fde047" opacity="0.6"/>
+  <rect x="280" y="325" width="40" height="5" rx="2.5" fill="#fde047" opacity="0.5"/>
+  <!-- Island & Lighthouse -->
+  <path d="M50 260 Q140 200 220 260 Z" fill="#1e293b"/>
+  <polygon points="120,225 150,225 143,115 127,115" fill="#f8fafc" stroke="#1e293b" stroke-width="4"/>
+  <polygon points="124,195 146,195 145,170 125,170" fill="#ef4444"/>
+  <polygon points="126,145 144,145 143,125 127,125" fill="#ef4444"/>
+  <rect x="122" y="100" width="26" height="15" fill="#fef08a" stroke="#1e293b" stroke-width="4"/>
+  <polygon points="118,100 152,100 135,80" fill="#ef4444" stroke="#1e293b" stroke-width="4"/>
+  <!-- Sailboat -->
+  <polygon points="440,240 495,240 480,260 450,260" fill="#f8fafc"/>
+  <polygon points="468,165 468,235 435,235" fill="#ffffff"/>
+  <polygon points="473,178 473,235 500,235" fill="#f43f5e"/>
+</svg>

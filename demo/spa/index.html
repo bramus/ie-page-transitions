@@ -34,7 +34,6 @@
         import { startViewTransition } from '/dist/ie-page-transitions.spa.js';
         import { randomize } from '/shared/randomize.module.js';
 
-        // Rasdf
         document.querySelector(`form`).addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -67,12 +66,59 @@
         <p><a href="../">&larr; To Index</a></p>
     </header> 
     <main>
-        <h2>Choose your effects</h2>
+        <!-- Slide 1: Image Left + Text Right -->
+        <article class="content-slide">
+            <h2>1. Surfing the 90s Web</h2>
+            <div class="slide-split">
+                <img src="/shared/slide-1.svg" width="600" height="400" alt="Retro CRT computer monitor displaying page transition shapes">
+                <div>
+                    <p>Back in 1997, Microsoft Internet Explorer 4.0 introduced <strong>Interpage Transitions</strong>—letting webmasters add dramatic PowerPoint-style transitions between pages with a single <code>&lt;meta&gt;</code> tag.</p>
+                    <p>Whether you wanted a dramatic circle iris or a classic vertical wipe, every link click became a miniature theatrical event across the Information Superhighway.</p>
+                </div>
+            </div>
+        </article>
 
-        <p>Use this form to choose the effects to run. When hitting Go, the page will navigate to itself. When choosing “none”, the default View Transition effect (a fade) will be used.</p>
+        <!-- Slide 2: Text Left + Image Right -->
+        <article class="content-slide" hidden>
+            <h2>2. Coastal Horizons &amp; Scenic Wipes</h2>
+            <div class="slide-split">
+                <div>
+                    <p>With the modern <strong>View Transition API</strong> and Selective View Transitions with Active Types, we can recreate all 23 classic <code>RevealTrans</code> effects purely in CSS.</p>
+                    <p>Unlike Internet Explorer—where setting both an exit and an entry effect caused a conflict—this library smoothly chains your exit and entry transitions one after the other.</p>
+                </div>
+                <img src="/shared/slide-2.svg" width="600" height="400" alt="Coastal sunset with a red-and-white striped lighthouse and sailboat">
+            </div>
+        </article>
 
+        <!-- Slide 3: Wide Top Banner + Two-Column Text -->
+        <article class="content-slide" hidden>
+            <h2>3. Exploring the Digital Frontier</h2>
+            <div class="slide-banner">
+                <img src="/shared/slide-3.svg" width="600" height="400" alt="Synthwave mountain landscape with glowing sun and perspective grid">
+                <div class="slide-columns">
+                    <p>From <em>Box in</em> (<code>0</code>) and <em>Circle out</em> (<code>3</code>) to <em>Random dissolve</em> (<code>12</code>) and <em>Strips right up</em> (<code>20</code>), each effect animates <code>::view-transition-old(root)</code> and <code>::view-transition-new(root)</code>.</p>
+                    <p>Use the floating control bar below to pick any combination of Exit and Entry effects and hit <strong>Go!</strong> to cycle to the next view.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- Slide 4: Dual Image Gallery + Caption -->
+        <article class="content-slide" hidden>
+            <h2>4. 23 PowerPoint-Inspired Filters</h2>
+            <div class="slide-gallery">
+                <img src="/shared/slide-4.svg" width="600" height="400" alt="Grid of four transition filter patterns: checkerboard, circle iris, blinds, and strips">
+                <img src="/shared/slide-1.svg" width="600" height="400" alt="Retro CRT computer monitor">
+            </div>
+            <p>Fine-tune effects like Blinds, Checkerboard, Random Dissolve, and Random Bars using CSS Custom Properties such as <code>--page-transitions-blinds-bands</code> and <code>--page-transitions-checkerboard-columns</code>.</p>
+        </article>
+    </main>
+    <footer>
+        <p>Built by <a href="https://www.bram.us">Bramus</a>. Just for funzies.</p>
+    </footer>
+
+    <aside class="floating-controls" aria-label="Transition Controls">
         <form action="">
-            <div class="row">
+            <div class="control-group">
                 <label for="exit-effect">Exit Effect (current view)</label>
                 <select name="Page-Exit" id="exit-effect">
                     <option value="">(none)</option>
@@ -102,7 +148,7 @@
                     <option value="23" selected>23 – Random</option>
                 </select>
             </div>
-            <div class="row">
+            <div class="control-group">
                 <label for="entry-effect">Entry Effect (next view)</label>
                 <select name="Page-Enter" id="entry-effect">
                     <option value="">(none)</option>
@@ -132,13 +178,8 @@
                     <option value="23" selected>23 – Random</option>
                 </select>
             </div>
-            <div class="row">
-                <button>Go!</button>
-            </div>
+            <button>Go!</button>
         </form>
-    </main>
-    <footer>
-        <p>Built by <a href="https://www.bram.us">Bramus</a>. Just for funzies.</p>
-    </footer>
+    </aside>
 </body>
 </html>

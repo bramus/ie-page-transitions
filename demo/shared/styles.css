@@ -245,4 +245,119 @@
             color: black;
         }
     }
+
+    body:has(.floating-controls) {
+        padding-bottom: 7.5rem;
+    }
+
+    .content-slide {
+        &[hidden] {
+            display: none !important;
+        }
+
+        > *:first-child {
+            margin-top: 0;
+        }
+        > *:last-child {
+            margin-bottom: 0;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.35rem;
+            border: 1px solid rgb(0 0 0 / 0.2);
+            display: block;
+        }
+    }
+
+    .slide-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        align-items: center;
+        margin-top: 0.75rem;
+
+        p:first-child {
+            margin-top: 0;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .slide-banner {
+        margin-top: 0.75rem;
+
+        > img {
+            max-height: 155px;
+            object-fit: cover;
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    .slide-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .slide-gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 0.75rem 0;
+
+        img {
+            max-height: 175px;
+            object-fit: cover;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .slide-split,
+        .slide-columns,
+        .slide-gallery {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .floating-controls {
+        position: fixed;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 80ch;
+        width: 90%;
+        z-index: 10;
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 0.75rem 1rem;
+            padding: 0.65rem 1rem;
+            background: rgb(255 255 255 / 0.85);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 20px rgb(0 0 0 / 0.12);
+        }
+
+        .control-group {
+            flex: 1 1 200px;
+        }
+
+        label {
+            font-size: 0.8em;
+            line-height: 1.2;
+            margin-bottom: 0.2rem;
+        }
+
+        button {
+            padding: 0.25rem 0.9rem;
+        }
+    }
 }

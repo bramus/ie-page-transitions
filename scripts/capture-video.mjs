@@ -81,7 +81,7 @@ const COLORS = [
 	'#ffc078', // 15: Apricot
 	'#9775fa', // 16: Violet
 	'#69db7c', // 17: Spring green
-	'#faa2c1', // 18:amingo pink
+	'#faa2c1', // 18: Flamingo pink
 	'#91a7ff', // 19: Periwinkle
 	'#ffe8cc', // 20: Cream peach
 	'#3bc9db', // 21: Cyan blue
@@ -237,7 +237,7 @@ try {
 		mobile: false,
 	});
 
-	// Wait for page load, fonts, and any initial entry View Transition to finish
+	// Wait for page load, fonts, images, and any initial entry View Transition to finish
 	await sleep(1200);
 	await send('Runtime.evaluate', {
 		expression: `(async () => {
@@ -247,13 +247,20 @@ try {
 			for (const anim of document.getAnimations()) {
 				anim.finish();
 			}
-			// Fit header, main, and footer cleanly centered inside 1280x720
+
+			// Temporarily unhide all slides so every image decodes ahead of time
+			const slides = document.querySelectorAll('.content-slide');
+			slides.forEach((s) => (s.hidden = false));
+			const imgs = Array.from(document.querySelectorAll('img'));
+			await Promise.all(imgs.map((img) => img.decode().catch(() => {})));
+
+			const { cycleContentSlide } = await import('/shared/randomize.module.js');
+			cycleContentSlide(0);
+
+			// Fit header, main, footer, and floating bottom bar cleanly inside 1280x720
 			document.body.style.backgroundColor = '${COLORS[0]}';
-			document.body.style.display = 'flex';
-			document.body.style.flexDirection = 'column';
-			document.body.style.justifyContent = 'center';
-			document.body.style.padding = '1rem 2rem';
-			document.documentElement.style.fontSize = '1.1em';
+			document.body.style.padding = '0.75rem 2rem 5.5rem';
+			document.documentElement.style.fontSize = '1.05em';
 
 			const style = document.createElement('style');
 			style.textContent = \`
@@ -314,11 +321,12 @@ try {
 			await captureFrame();
 		}
 
-		// 2. Start the View Transition, wait for vt.ready, and immediately pause its animations
-		// so we can scrub them frame-by-frame deterministically.
+		// 2. Start the View Transition, cycle to next content slide + color, wait for vt.ready,
+		// and immediately pause its animations so we can scrub them frame-by-frame deterministically.
 		await send('Runtime.evaluate', {
 			expression: `(async () => {
 				const { startViewTransition } = await import('/dist/ie-page-transitions.spa.js');
+				const { cycleContentSlide } = await import('/shared/randomize.module.js');
 				const btn = document.querySelector('form button');
 				btn.classList.remove('is-active');
 
@@ -332,6 +340,7 @@ try {
 					const oldColor = getComputedStyle(document.body).getPropertyValue('background-color');
 					document.documentElement.style.setProperty('--page-transitions-backdrop-color', oldColor);
 					document.body.style.setProperty('background-color', '${nextColor}');
+					cycleContentSlide();
 				});
 
 				window.__activeVT = vt;
