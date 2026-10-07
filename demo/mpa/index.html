@@ -26,14 +26,25 @@
 
     <!-- Configure IE Page Transitions Effect -->
     <!-- None. This page has no effect -->
+    <script>if (window.self !== window.top) document.documentElement.classList.add('in-iframe');</script>
+    <script type="module">
+        import { updateRandomLinks } from '/shared/randomize.module.js';
+        updateRandomLinks();
+    </script>
 </head>
 <body>
     <header>
         <h1>IE Page Transitions (MPA)</h1>
         <p><em>Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API</em></p>
-        <p><a href="../">&larr; To Index</a></p>
+        <p class="back-to-index"><a href="../">&larr; To Index</a></p>
     </header>
     <main>
+        <h2>Page with Entry + Exit Effects</h2>
+        <p>The new page has both an entry and exit effect applied.</p>
+        <ol start="23">
+            <li><a href="/mpa/both/23">Random</a></li>
+        </ol>
+
         <h2>Pages with Entry Effects</h2>
         <p>The chosen effect is applied on the new page upon entering it.</p>
         <ol start="0">
@@ -92,12 +103,6 @@
             <li><a href="/mpa/exit/22">Random bars vertical</a></li>
             <li><a href="/mpa/exit/23">Random</a></li>
             <li><a href="/mpa/exit/24">Invalid</a></li>
-        </ol>
-
-        <h2>Page with Entry + Exit Effects</h2>
-        <p>The new page has both an entry and exit effect applied.</p>
-        <ol start="23">
-            <li><a href="/mpa/both/23">Random</a></li>
         </ol>
     </main>
     <footer>

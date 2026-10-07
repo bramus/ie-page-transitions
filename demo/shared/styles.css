@@ -65,6 +65,15 @@
         margin-top: 3rem;
     }
 
+    .in-iframe header {
+        margin-top: 0;
+    }
+
+    .in-iframe .back-to-index,
+    .in-iframe footer {
+        display: none;
+    }
+
     h1, h2 {
         font-weight: 700;
         text-decoration: underline;

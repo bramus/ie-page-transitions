@@ -4,165 +4,534 @@
  SPDX-License-Identifier: Apache-2.0
 -->
 
-<html lang="en">
+<html lang="en" data-syntax-theme="github">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>IE Page Transitions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>page-transitions.style — Bringing back Internet Explorer’s Page Transitions</title>
+  <meta name="description" content="Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API">
 
-    <link rel="stylesheet" href="/shared/styles.css">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://page-transitions.style/">
+  <meta property="og:title" content="page-transitions.style — Bringing back Internet Explorer’s Page Transitions">
+  <meta property="og:description" content="Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API">
+  <meta property="og:image" content="https://page-transitions.style/shared/demo-poster.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="page-transitions.style — Bringing back Internet Explorer’s Page Transitions">
+  <meta name="twitter:description" content="Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API">
+  <meta name="twitter:image" content="https://page-transitions.style/shared/demo-poster.png">
+  <meta name="twitter:creator" content="@bramus">
+
+  <link rel="stylesheet" href="https://davatron5000.github.io/microlighter/microlighter/themes/github.css">
+  <link rel="stylesheet" href="/shared/index.css">
+  <script type="module" src="https://davatron5000.github.io/microlighter/microlighter/micro-lighter-element.min.js"></script>
+  <script type="module" src="/shared/index.js"></script>
 </head>
+
 <body>
-
+  <div class="container">
     <header>
-        <h1>IE Page Transitions</h1>
-        <p><em>Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API</em></p>
+      <div class="header-top">
+        <div class="title-group">
+          <h1><span class="title-tag">page-transitions.style</span></h1>
+        </div>
+        <div class="header-actions">
+          <a href="https://github.com/bramus/ie-page-transitions" class="github-btn" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+            <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.npmjs.com/package/ie-page-transitions" class="npm-btn" target="_blank" rel="noopener noreferrer" aria-label="View on npm">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
+            </svg>
+            <span>npm</span>
+          </a>
+        </div>
+      </div>
+      <p class="description">
+        <strong><code>ie-page-transitions</code></strong> is a CSS + JS library that brings back Microsoft Internet Explorer’s proprietary “Interpage Transitions” to modern browsers. It works by reading the same <code>&lt;meta&gt;</code> tags that were used in the original Internet Explorer implementation and executing the transitions using the&nbsp;<a href="https://developer.chrome.com/docs/web-platform/view-transitions">View&nbsp;Transition&nbsp;API</a>.
+      </p>
+
+      <!-- Dynamic Browser Support Banner -->
+      <div id="api-banner" class="api-banner"></div>
     </header>
-    
-    <main>
-        <video controls autoplay loop muted playsinline preload="metadata" poster="/shared/demo-poster.png" src="/shared/demo.mp4"></video>
 
-        <p><strong><code>ie-page-transitions</code></strong> is a CSS + JS library that brings back Microsoft Internet Explorer’s proprietary “Interpage Transitions” to modern browsers, powered by the <a href="https://developer.chrome.com/docs/web-platform/view-transitions">View Transition API</a>. It works by reading the same <code>&lt;meta&gt;</code> tags that were used in the original Internet Explorer implementation and executing the same transitions using the View Transition API.</p>
+    <div class="page-layout">
+      <!-- Sidenav / Scrollspy -->
+      <aside class="sidebar">
+        <nav class="sidenav" aria-label="Table of contents">
+          <div class="sidenav-title">Documentation</div>
+          <ul class="sidenav-list">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#history">IE’s Page Transitions</a></li>
+            <li><a href="#revealtrans">The RevealTrans Filter</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#usage-mpa">MPA Usage</a></li>
+            <li><a href="#usage-spa">SPA Usage</a></li>
+            <li><a href="#configuration">Effect Configuration</a></li>
+            <li><a href="#custom-properties">Custom Properties</a></li>
+            <li><a href="#browser-support">Browser Support</a></li>
+            <li class="sidenav-divider">Live Demos</li>
+            <li><a href="#demo-spa">1. SPA Playground</a></li>
+            <li><a href="#demo-mpa">2. MPA Navigation</a></li>
+          </ul>
+        </nav>
+      </aside>
 
-        <h2>Live Demos</h2>
-        <p>Choose your flavor to see the transitions in action:</p>
-        <ul>
-            <li><a href="/spa"><strong>SPA Demo</strong></a> — Interactive playground where you can freely mix and match any entry and exit effect in a Single-Page Application.</li>
-            <li><a href="/mpa"><strong>MPA Demo</strong></a> — Multi-Page Application demo using Cross-Document View Transitions <em>(also works natively in Internet Explorer 5.5–8.0!)</em>.</li>
-        </ul>
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Overview Section -->
+        <section id="overview">
+          <h2>Overview</h2>
+          <p class="section-desc">
+            Relive the late-90s web with all 23 classic PowerPoint-inspired <code>revealTrans</code> transitions—from <em>Box in</em>, <em>Circle out</em>, and <em>Vertical blinds</em> to <em>Checkerboard</em>, <em>Random dissolve</em>, and <em>Random bars</em>—rebuilt with modern CSS and the View Transition API.
+          </p>
 
-        <hr>
-
-        <h2>Internet Explorer’s Page Transitions</h2>
-        <p>Microsoft Internet Explorer 4.0 and above featured a proprietary feature called <a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532847(v=vs.85)?redirectedfrom=MSDN#interpage-transitions">Interpage Transitions</a>. It allowed authors to specify <a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532853(v=vs.85)#transitions">a transition effect</a> to apply to the entire browser window as a web page was loaded or exited.</p>
-        <p>The feature worked best as of Internet Explorer 5.5—which had a richer variety of optimized filters—before eventually being deprecated in Internet Explorer 9.</p>
-        <p>Transitions were specified using a <code>&lt;meta&gt;</code> tag in the <code>&lt;head&gt;</code> of a web page, hooked into one of four events: <code>Page-Enter</code>, <code>Page-Exit</code>, <code>Site-Enter</code>, and <code>Site-Exit</code>:</p>
-        <pre><code>&lt;meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Blinds(Duration=4)" /&gt;
-&lt;meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Slide(Duration=2.500,slidestyle='HIDE')" /&gt;</code></pre>
-
-        <h3>The <code>RevealTrans</code> Filter</h3>
-        <p>Page Transitions also came with a convenient shorthand: <a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms533085(v=vs.85)">the <code>DXImageTransform.Microsoft.RevealTrans</code> filter</a>, which offered 23 predefined transitions mirrored from the slide transitions found in Microsoft PowerPoint.</p>
-        <p>Using one of these predefined effects was as easy as referring to its number—ranging from <code>0</code> to <code>22</code>—in the <code>Transition</code> property (or <code>23</code> to randomly select one of the 23 effects):</p>
-        <pre><code>&lt;meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=7)"&gt;</code></pre>
-        <p>Under the hood, <code>revealTrans(Transition=7)</code>—a vertical wipe from right to left—mapped to a <code>DXImageTransform.Microsoft.Blinds(direction='left', bands=1)</code> effect.</p>
-
-        <details>
-            <summary>View all 24 <code>RevealTrans</code> Transition Effects (0–23)</summary>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>DXImageTransform Equivalent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>0</td><td>Box in</td><td>Rectangle towards centre</td><td><code>Iris(irisstyle='SQUARE', motion='in')</code></td></tr>
-                        <tr><td>1</td><td>Box out</td><td>Rectangle from centre outwards</td><td><code>Iris(irisstyle='SQUARE', motion='out')</code></td></tr>
-                        <tr><td>2</td><td>Circle in</td><td>Circle towards centre</td><td><code>Iris(irisstyle='CIRCLE', motion='in')</code></td></tr>
-                        <tr><td>3</td><td>Circle out</td><td>Circle from centre outwards</td><td><code>Iris(irisstyle='CIRCLE', motion='out')</code></td></tr>
-                        <tr><td>4</td><td>Wipe up</td><td>Horizontal wipe from bottom to top</td><td><code>Blinds(direction='up', bands=1)</code></td></tr>
-                        <tr><td>5</td><td>Wipe down</td><td>Horizontal wipe from top to bottom</td><td><code>Blinds(direction='down', bands=1)</code></td></tr>
-                        <tr><td>6</td><td>Wipe right</td><td>Vertical wipe from left to right</td><td><code>Blinds(direction='right', bands=1)</code></td></tr>
-                        <tr><td>7</td><td>Wipe left</td><td>Vertical wipe from right to left</td><td><code>Blinds(direction='left', bands=1)</code></td></tr>
-                        <tr><td>8</td><td>Vertical blinds</td><td>Vertical blinds from left to right</td><td><code>Blinds(direction='right')</code></td></tr>
-                        <tr><td>9</td><td>Horizontal blinds</td><td>Horizontal blinds from top to bottom</td><td><code>Blinds(direction='down')</code></td></tr>
-                        <tr><td>10</td><td>Checkerboard across</td><td>Box blinds from left to right</td><td><code>CheckerBoard(direction='right')</code></td></tr>
-                        <tr><td>11</td><td>Checkerboard down</td><td>Box blinds from top to bottom</td><td><code>CheckerBoard(direction='down')</code></td></tr>
-                        <tr><td>12</td><td>Random dissolve</td><td>Pixel fade</td><td><code>RandomDissolve</code></td></tr>
-                        <tr><td>13</td><td>Split vertical in</td><td>Vertical window opening from middle to sides</td><td><code>Barn(orientation='vertical', motion='in')</code></td></tr>
-                        <tr><td>14</td><td>Split vertical out</td><td>Vertical window closing from sides to middle</td><td><code>Barn(orientation='vertical', motion='out')</code></td></tr>
-                        <tr><td>15</td><td>Split horizontal in</td><td>Horizontal window opening from middle to top/bottom</td><td><code>Barn(orientation='horizontal', motion='in')</code></td></tr>
-                        <tr><td>16</td><td>Split horizontal out</td><td>Horizontal window closing from top/bottom to middle</td><td><code>Barn(orientation='horizontal', motion='out')</code></td></tr>
-                        <tr><td>17</td><td>Strips left down</td><td>Revealed from upper left to lower right</td><td><code>Strips(motion='leftdown')</code></td></tr>
-                        <tr><td>18</td><td>Strips left up</td><td>Revealed from lower left to upper right</td><td><code>Strips(motion='leftup')</code></td></tr>
-                        <tr><td>19</td><td>Strips right down</td><td>Revealed from upper right to lower left</td><td><code>Strips(motion='rightdown')</code></td></tr>
-                        <tr><td>20</td><td>Strips right up</td><td>Revealed from lower right to upper left</td><td><code>Strips(motion='rightup')</code></td></tr>
-                        <tr><td>21</td><td>Random bars horizontal</td><td>Vertical line fade</td><td><code>RandomBars(orientation='horizontal')</code></td></tr>
-                        <tr><td>22</td><td>Random bars vertical</td><td>Horizontal line fade</td><td><code>RandomBars(orientation='vertical')</code></td></tr>
-                        <tr><td>23</td><td>Random</td><td>Randomly selects one of the 23 effects above</td><td><em>—</em></td></tr>
-                    </tbody>
-                </table>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Video Showcase</span>
+              <span class="card-meta">All 23 RevealTrans Effects</span>
             </div>
-        </details>
+            <video class="showcase-video" controls autoplay loop muted playsinline preload="metadata" poster="/shared/demo-poster.png" src="/shared/demo.mp4"></video>
+            <div class="preset-buttons" style="margin-top: 1rem; margin-bottom: 0;">
+              <a href="#demo-spa" class="btn btn-primary">✨ Try Interactive SPA Demo &darr;</a>
+              <a href="#demo-mpa" class="btn">🧭 Try Cross-Document MPA Demo &darr;</a>
+            </div>
+          </div>
 
-        <hr>
+          <div class="features-grid">
+            <div class="feature-item">
+              <h3>🎬 All 23 + 1 Classic Effects</h3>
+              <p>Implements every single <code>RevealTrans</code> transition from <code>0</code> (Box in) through <code>22</code> (Random bars vertical), plus <code>23</code> (Random selection).</p>
+            </div>
+            <div class="feature-item">
+              <h3>🏷️ Original <code>&lt;meta&gt;</code> Syntax</h3>
+              <p>Configured using the exact same <code>&lt;meta http-equiv="Page-Enter" content="revealTrans(...)"&gt;</code> markup from Internet Explorer 4.0–8.0.</p>
+            </div>
+            <div class="feature-item">
+              <h3>🔗 Sequential Exit + Entry</h3>
+              <p>Unlike IE—where combining an exit and an entry transition conflicted and aborted—both effects run seamlessly one after the other.</p>
+            </div>
+            <div class="feature-item">
+              <h3>⚡ SPA &amp; MPA Support</h3>
+              <p>Works with both Cross-Document View Transitions (MPA) and Same-Document View Transitions (SPA)—and MPA pages still work natively in IE 5.5–8.0!</p>
+            </div>
+            <div class="feature-item">
+              <h3>🎨 Configurable via CSS</h3>
+              <p>Customize blind bands, checkerboard grid dimensions, dissolve pixel size, bar thickness, and backdrop colors via CSS Custom Properties.</p>
+            </div>
+            <div class="feature-item">
+              <h3>🛡️ Progressive Enhancement</h3>
+              <p>Browsers without View Transition API or Active Types support simply navigate normally without errors or visual side effects.</p>
+            </div>
+          </div>
+        </section>
 
-        <h2>How This Library Works</h2>
-        <p><code>ie-page-transitions</code> reads the original <code>&lt;meta http-equiv="Page-Enter"&gt;</code> and <code>&lt;meta http-equiv="Page-Exit"&gt;</code> tags from your HTML document and translates them into <a href="https://drafts.csswg.org/css-view-transitions-2/#selective-vt">Selective View Transitions with Active Types</a>. The accompanying CSS stylesheet then animates <code>::view-transition-old(root)</code> and <code>::view-transition-new(root)</code> using modern CSS (such as <code>clip-path</code>, <code>mask-image</code>, and <code>@keyframes</code>).</p>
+        <!-- IE History Section -->
+        <section id="history">
+          <h2>Internet Explorer’s Page Transitions</h2>
+          <p class="section-desc">
+            Microsoft Internet Explorer 4.0 and above featured a proprietary feature called <a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532847(v=vs.85)?redirectedfrom=MSDN#interpage-transitions" target="_blank" rel="noopener noreferrer">Interpage Transitions</a>. It allowed authors to specify <a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms532853(v=vs.85)#transitions" target="_blank" rel="noopener noreferrer">a transition effect</a> to apply to the entire browser window as a web page was loaded or exited.
+          </p>
+          <p>
+            Transitions were specified using a <code>&lt;meta&gt;</code> tag in the <code>&lt;head&gt;</code> of a web page. Four events could create instances of interpage transitions: <code>Page-Enter</code>, <code>Page-Exit</code>, <code>Site-Enter</code>, and <code>Site-Exit</code>.
+          </p>
 
-        <h3>Combining Exit and Entry Transitions</h3>
-        <p>In Internet Explorer it was not possible for one page to run an exit transition and the next page to run an entry transition—having both caused a conflict resulting in no transition happening at all. This library lifts that limitation: when both an exit and an entry effect are configured, they run sequentially.</p>
+          <div class="card" style="margin-top: 1.25rem;">
+            <div class="card-header">
+              <span class="card-title">DirectX ImageTransform Filter Syntax</span>
+              <span class="card-meta">HTML</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              For example, the following snippet caused the <code>Blinds</code> transition to play when the user loaded the page and caused a <code>Slide</code> transition to play when the user exited the page:
+            </p>
+            <micro-lighter language="html" controls="copy">
+              <pre><code>&lt;meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Blinds(Duration=4)" /&gt;
+&lt;meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Slide(Duration=2.500,slidestyle='HIDE')" /&gt;</code></pre>
+            </micro-lighter>
+          </div>
+          <p>
+            The feature worked best as of Microsoft Internet Explorer 5.5, which had a richer variety of optimized filters. The feature was eventually deprecated with the release of Windows Internet Explorer 9.
+          </p>
+        </section>
 
-        <h3>Effect Configuration &amp; Custom Properties</h3>
-        <p>Just like in IE, effects are configured via the <code>&lt;meta&gt;</code> tag:</p>
-        <ul>
-            <li>Set <code>http-equiv</code> to <code>Page-Enter</code> or <code>Page-Exit</code>.</li>
-            <li>Set <code>Duration</code> in seconds (supported values: <code>0.5</code>, <code>1.0</code>, <code>1.5</code>, and <code>2.0</code>).</li>
-            <li>Set <code>Transition</code> to an integer from <code>0</code> to <code>22</code>, or <code>23</code> for a random effect.</li>
-        </ul>
-        <p>Several effects can also be fine-tuned via CSS Custom Properties on <code>:root</code>:</p>
-        <ul>
-            <li><code>--page-transitions-backdrop-color</code>: Backdrop color of <code>::view-transition</code> between sequential exit and entry effects (default: <code>transparent</code>).</li>
-            <li><code>--page-transitions-blinds-bands</code>: Number of bands for Blinds effects <code>8</code> and <code>9</code> (default: <code>6</code>).</li>
-            <li><code>--page-transitions-checkerboard-columns</code> &amp; <code>--page-transitions-checkerboard-rows</code>: Grid size for Checkerboard effects <code>10</code> and <code>11</code> (default: <code>10</code>).</li>
-            <li><code>--page-transitions-random-dissolve-size</code>: Pixel size for Random Dissolve effect <code>12</code> (default: <code>4px</code>).</li>
-            <li><code>--page-transitions-random-bars-size</code>: Bar thickness for Random Bars effects <code>21</code> and <code>22</code> (default: <code>4px</code>).</li>
-        </ul>
+        <!-- RevealTrans Section -->
+        <section id="revealtrans">
+          <h2>The <code>RevealTrans</code> Filter</h2>
+          <p class="section-desc">
+            The Page Transitions feature also came with a shorthand—<a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms533085(v=vs.85)" target="_blank" rel="noopener noreferrer">the <code>DXImageTransform.Microsoft.RevealTrans</code> Filter</a>—which offered 23 predefined transitions mirrored from the slide transitions found in Microsoft PowerPoint.
+          </p>
+          <p>
+            Using one of these predefined effects was as easy as referring to its number—ranging from <code>0</code> to <code>22</code>—in the <code>revealTrans</code> filter’s <code>Transition</code> property. Using the value <code>23</code> randomly selected one of the 23 available effects.
+          </p>
 
-        <hr>
+          <div class="card" style="margin-top: 1.25rem;">
+            <div class="card-header">
+              <span class="card-title">RevealTrans Shorthand Example</span>
+              <span class="card-meta">Transition=7 (Wipe left)</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Under the hood, <code>revealTrans(Transition=7)</code>—a vertical wipe from right to left—mapped to a <code>DXImageTransform.Microsoft.Blinds(direction='left', bands=1)</code> effect:
+            </p>
+            <micro-lighter language="html" controls="copy">
+              <pre><code>&lt;meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=7)"&gt;</code></pre>
+            </micro-lighter>
+          </div>
 
-        <h2>Usage</h2>
-        <p>Install via NPM (<code>npm install ie-page-transitions</code>) or load directly from a CDN such as unpkg or jsDelivr.</p>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">All 24 <code>RevealTrans</code> Transition Effects</span>
+              <span class="card-meta">0 – 23</span>
+            </div>
+            <div class="data-table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>DXImageTransform Equivalent</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>✅</td><td><code>0</code></td><td><strong>Box in</strong></td><td>Rectangle towards centre</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='SQUARE', motion='in')</code></td></tr>
+                  <tr><td>✅</td><td><code>1</code></td><td><strong>Box out</strong></td><td>Rectangle from centre outwards</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='SQUARE', motion='out')</code></td></tr>
+                  <tr><td>✅</td><td><code>2</code></td><td><strong>Circle in</strong></td><td>Circle towards centre</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='CIRCLE', motion='in')</code></td></tr>
+                  <tr><td>✅</td><td><code>3</code></td><td><strong>Circle out</strong></td><td>Circle from centre outwards</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='CIRCLE', motion='out')</code></td></tr>
+                  <tr><td>✅</td><td><code>4</code></td><td><strong>Wipe up</strong></td><td>Horizontal wipe from bottom to top</td><td><code>DXImageTransform.Microsoft.Blinds(direction='up', bands=1)</code></td></tr>
+                  <tr><td>✅</td><td><code>5</code></td><td><strong>Wipe down</strong></td><td>Horizontal wipe from top to bottom</td><td><code>DXImageTransform.Microsoft.Blinds(direction='down', bands=1)</code></td></tr>
+                  <tr><td>✅</td><td><code>6</code></td><td><strong>Wipe right</strong></td><td>Vertical wipe from left to right</td><td><code>DXImageTransform.Microsoft.Blinds(direction='right', bands=1)</code></td></tr>
+                  <tr><td>✅</td><td><code>7</code></td><td><strong>Wipe left</strong></td><td>Vertical wipe from right to left</td><td><code>DXImageTransform.Microsoft.Blinds(direction='left', bands=1)</code></td></tr>
+                  <tr><td>✅</td><td><code>8</code></td><td><strong>Vertical blinds</strong></td><td>Vertical blinds from left to right</td><td><code>DXImageTransform.Microsoft.Blinds(direction='right')</code></td></tr>
+                  <tr><td>✅</td><td><code>9</code></td><td><strong>Horizontal blinds</strong></td><td>Horizontal blinds from top to bottom</td><td><code>DXImageTransform.Microsoft.Blinds(direction='down')</code></td></tr>
+                  <tr><td>✅</td><td><code>10</code></td><td><strong>Checkerboard across</strong></td><td>Box blinds from left to right</td><td><code>DXImageTransform.Microsoft.CheckerBoard(direction='right')</code></td></tr>
+                  <tr><td>✅</td><td><code>11</code></td><td><strong>Checkerboard down</strong></td><td>Box blinds from top to bottom</td><td><code>DXImageTransform.Microsoft.CheckerBoard(direction='down')</code></td></tr>
+                  <tr><td>✅</td><td><code>12</code></td><td><strong>Random dissolve</strong></td><td>Pixel fade</td><td><code>DXImageTransform.Microsoft.RandomDissolve</code></td></tr>
+                  <tr><td>✅</td><td><code>13</code></td><td><strong>Split vertical in</strong></td><td>Vertical window opening from middle to sides</td><td><code>DXImageTransform.Microsoft.Barn(orientation='vertical', motion='in')</code></td></tr>
+                  <tr><td>✅</td><td><code>14</code></td><td><strong>Split vertical out</strong></td><td>Vertical window closing from sides to middle</td><td><code>DXImageTransform.Microsoft.Barn(orientation='vertical', motion='out')</code></td></tr>
+                  <tr><td>✅</td><td><code>15</code></td><td><strong>Split horizontal in</strong></td><td>Horizontal window opening from middle to top/bottom</td><td><code>DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='in')</code></td></tr>
+                  <tr><td>✅</td><td><code>16</code></td><td><strong>Split horizontal out</strong></td><td>Horizontal window closing from top/bottom to middle</td><td><code>DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='out')</code></td></tr>
+                  <tr><td>✅</td><td><code>17</code></td><td><strong>Strips left down</strong></td><td>New content is revealed from the upper left corner to the lower right</td><td><code>DXImageTransform.Microsoft.Strips(motion='leftdown')</code></td></tr>
+                  <tr><td>✅</td><td><code>18</code></td><td><strong>Strips left up</strong></td><td>New content is revealed from the lower left corner to the upper right</td><td><code>DXImageTransform.Microsoft.Strips(motion='leftup')</code></td></tr>
+                  <tr><td>✅</td><td><code>19</code></td><td><strong>Strips right down</strong></td><td>New content is revealed from the upper right corner to the lower left</td><td><code>DXImageTransform.Microsoft.Strips(motion='rightdown')</code></td></tr>
+                  <tr><td>✅</td><td><code>20</code></td><td><strong>Strips right up</strong></td><td>New content is revealed from the lower right corner to the upper left</td><td><code>DXImageTransform.Microsoft.Strips(motion='rightup')</code></td></tr>
+                  <tr><td>✅</td><td><code>21</code></td><td><strong>Random bars horizontal</strong></td><td>Vertical line fade</td><td><code>DXImageTransform.Microsoft.RandomBars(orientation='horizontal')</code></td></tr>
+                  <tr><td>✅</td><td><code>22</code></td><td><strong>Random bars vertical</strong></td><td>Horizontal line fade</td><td><code>DXImageTransform.Microsoft.RandomBars(orientation='vertical')</code></td></tr>
+                  <tr><td>✅</td><td><code>23</code></td><td><strong>Random</strong></td><td>Randomly selects one of the 23 effects above</td><td><em>—</em></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
 
-        <h3>MPA (Cross-Document View Transitions)</h3>
-        <pre><code>&lt;!-- 1. Enable Cross-Document View Transitions --&gt;
-&lt;style&gt;
+        <!-- How It Works Section -->
+        <section id="how-it-works">
+          <h2>How This Library Works</h2>
+          <p class="section-desc">
+            <code>ie-page-transitions</code> reads the <code>&lt;meta http-equiv="Page-Enter"&gt;</code> and <code>&lt;meta http-equiv="Page-Exit"&gt;</code> tags from your document and translates them into <a href="https://drafts.csswg.org/css-view-transitions-2/#selective-vt" target="_blank" rel="noopener noreferrer">Selective View Transitions with Active Types</a> (such as <code>page-enter-effect-7</code> and <code>page-enter-duration-0_5</code>).
+          </p>
+          <p>
+            The stylesheet (<code>ie-page-transitions.css</code>) uses the <code>:active-view-transition-type()</code> pseudo-class to animate <code>::view-transition-old(root)</code> and <code>::view-transition-new(root)</code> using modern CSS features including <code>clip-path</code> polygons, multi-layer <code>mask-image</code> gradients, registered custom properties (<code>@property</code>), and CSS <code>@keyframes</code>.
+          </p>
+
+          <div class="callout">
+            <h3>Combining Exit and Entry Transitions</h3>
+            <p>
+              In Internet Explorer it was not possible to have one page define an exit transition and the other page an entry transition. When having both an exit and entry effect, the two would conflict, resulting in no transition happening at all. <strong>This library does not have that limitation:</strong> when both an exit and entry effect are set, they run sequentially one after the other.
+            </p>
+          </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation">
+          <h2>Installation</h2>
+          <p class="section-desc">
+            Install <code>ie-page-transitions</code> from NPM or load the files directly from a CDN.
+          </p>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Install via NPM</span>
+              <span class="card-meta">Terminal</span>
+            </div>
+            <micro-lighter language="bash" controls="copy">
+              <pre><code>npm install ie-page-transitions</code></pre>
+            </micro-lighter>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Load via CDN</span>
+              <span class="card-meta">URLs</span>
+            </div>
+            <ul>
+              <li><strong>unpkg:</strong> <code>https://unpkg.com/ie-page-transitions/</code> + <code>path/to/file.ext</code></li>
+              <li><strong>jsDelivr:</strong> <code>https://cdn.jsdelivr.net/npm/ie-page-transitions/</code> + <code>path/to/file.ext</code></li>
+              <li><strong>Skypack:</strong> <code>https://cdn.skypack.dev/ie-page-transitions/</code> + <code>path/to/file.ext</code></li>
+              <li><strong>esm.sh:</strong> <code>https://esm.sh/ie-page-transitions/</code> + <code>path/to/file.ext</code></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- MPA Usage Section -->
+        <section id="usage-mpa">
+          <h2>MPA Usage (Cross-Document)</h2>
+          <p class="section-desc">
+            Follow these three steps to enable IE Page Transitions across same-origin multi-page navigations.
+          </p>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">1. Enable Cross-Document View Transitions</span>
+              <span class="card-meta">CSS</span>
+            </div>
+            <micro-lighter language="html" controls="copy">
+              <pre><code>&lt;style&gt;
     @view-transition {
         navigation: auto;
     }
-&lt;/style&gt;
+&lt;/style&gt;</code></pre>
+            </micro-lighter>
+          </div>
 
-&lt;!-- 2. Include stylesheet and render-blocking MPA script --&gt;
-&lt;link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/ie-page-transitions.css"&gt;
-&lt;script src="https://unpkg.com/ie-page-transitions/ie-page-transitions.mpa.js" type="module" blocking="render"&gt;&lt;/script&gt;
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">2. Include Stylesheet &amp; Render-Blocking Script</span>
+              <span class="card-meta">HTML</span>
+            </div>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">
+              Note: The script <strong>must</strong> be loaded as a module and <strong>must</strong> be set to block rendering (<code>blocking="render"</code>).
+            </p>
+            <micro-lighter language="html" controls="copy">
+              <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/ie-page-transitions.css"&gt;
+&lt;script src="https://unpkg.com/ie-page-transitions/ie-page-transitions.mpa.js" type="module" blocking="render"&gt;&lt;/script&gt;</code></pre>
+            </micro-lighter>
+          </div>
 
-&lt;!-- 3. Configure your desired effect(s) --&gt;
-&lt;meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)"&gt;
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">3. Add the <code>&lt;meta&gt;</code> Tag(s)</span>
+              <span class="card-meta">HTML</span>
+            </div>
+            <micro-lighter language="html" controls="copy">
+              <pre><code>&lt;meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)"&gt;
 &lt;meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)"&gt;</code></pre>
+            </micro-lighter>
+          </div>
+        </section>
 
-        <h3>SPA (Same-Document View Transitions)</h3>
-        <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/ie-page-transitions.css"&gt;
+        <!-- SPA Usage Section -->
+        <section id="usage-spa">
+          <h2>SPA Usage (Same-Document)</h2>
+          <p class="section-desc">
+            Use <code>ie-page-transitions.spa.js</code> to trigger IE Page Transitions during same-document DOM updates.
+          </p>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">1. Include Stylesheet, Meta Tags &amp; Optional First-Load Init</span>
+              <span class="card-meta">HTML</span>
+            </div>
+            <micro-lighter language="html" controls="copy">
+              <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/ie-page-transitions/ie-page-transitions.css"&gt;
 &lt;meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)"&gt;
 &lt;meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)"&gt;
 
-&lt;script type="module"&gt;
-    import { startViewTransition } from 'https://unpkg.com/ie-page-transitions/ie-page-transitions.spa.js';
-
-    $button.addEventListener('click', () => {
-        startViewTransition(updateTheDOMSomehow);
-    });
+&lt;!-- Optional: Run Page-Enter transition on initial page load --&gt;
+&lt;script type="module" blocking="render"&gt;
+    import { init } from 'https://unpkg.com/ie-page-transitions/ie-page-transitions.spa.js';
+    init();
 &lt;/script&gt;</code></pre>
+            </micro-lighter>
+          </div>
 
-        <hr>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">2. Call <code>startViewTransition(callback)</code></span>
+              <span class="card-meta">JavaScript</span>
+            </div>
+            <micro-lighter language="javascript" controls="copy">
+              <pre><code>import { startViewTransition } from 'https://unpkg.com/ie-page-transitions/ie-page-transitions.spa.js';
 
-        <h2>Browser Support</h2>
-        <p>Requires a browser with built-in Page Transitions support or support for the View Transition API + Selective View Transitions with Active Types:</p>
-        <ul>
-            <li><strong>SPA:</strong> Chrome 125+, Safari 18.2+</li>
-            <li><strong>MPA:</strong> Internet Explorer 5.5–8.0 <em>(built-in)</em>, Chrome 126+, Safari 18.2+ <em>(buggy)</em></li>
-        </ul>
-        <p>In browsers without View Transitions support, no effects will run and the presence of <code>ie-page-transitions.css</code> won’t negatively affect the page.</p>
+$linkToNextPage.addEventListener('click', (e) => {
+    e.preventDefault();
+    startViewTransition(updateTheDOMSomehow);
+});</code></pre>
+            </micro-lighter>
+          </div>
+        </section>
 
-        <hr>
+        <!-- Effect Configuration Section -->
+        <section id="configuration">
+          <h2>Effect Configuration</h2>
+          <p class="section-desc">
+            Just like in Internet Explorer, transitions are configured via the attributes of the <code>&lt;meta&gt;</code> tag:
+          </p>
+          <ul>
+            <li>Set <code>http-equiv</code> to either <code>Page-Enter</code> or <code>Page-Exit</code> to define whether this is a page entry or page exit animation.</li>
+            <li>Set <code>Duration</code> to define the duration in seconds for the effect (supported values: <code>0.5</code>, <code>1.0</code>, <code>1.5</code>, and <code>2.0</code>).</li>
+            <li>Set <code>Transition</code> to an integer from <code>0</code> to <code>22</code> to pick a specific transition, or <code>23</code> to randomly select one of the 23 effects.</li>
+          </ul>
 
-        <h2>Get the code</h2>
-        <p>You can find the source code <a href="https://github.com/bramus/ie-page-transitions">on GitHub</a> and the package <a href="https://www.npmjs.com/package/ie-page-transitions">on NPM</a>. Please refer to the <a href="https://github.com/bramus/ie-page-transitions#readme"><code>README.md</code></a> for full details.</p>
-    </main>
-    <footer>
-        <p>Built by <a href="https://www.bram.us">Bramus</a>. Source Code available on <a href="https://github.com/bramus/ie-page-transitions">GitHub</a>.</p>
+          <div class="card" style="margin-top: 1.25rem;">
+            <div class="card-header">
+              <span class="card-title">Example: 2-Second Random Dissolve on Page Entry</span>
+              <span class="card-meta">Transition=12</span>
+            </div>
+            <micro-lighter language="html" controls="copy">
+              <pre><code>&lt;meta http-equiv="Page-Enter" content="revealTrans(Duration=2.0,Transition=12)"&gt;</code></pre>
+            </micro-lighter>
+          </div>
+        </section>
+
+        <!-- Custom Properties Section -->
+        <section id="custom-properties">
+          <h2>CSS Custom Properties</h2>
+          <p class="section-desc">
+            Several effects and the backdrop between sequential exit/entry transitions can be customized by setting CSS Custom Properties on the <code>:root</code> element:
+          </p>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Available Custom Properties</span>
+              <span class="card-meta">:root</span>
+            </div>
+            <div class="data-table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Custom Property</th>
+                    <th>Default</th>
+                    <th>Applies To</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--page-transitions-backdrop-color</code></td>
+                    <td><code>transparent</code></td>
+                    <td>Exit + Entry</td>
+                    <td>Controls the <code>background-color</code> of the <code>::view-transition</code> backdrop between sequential exit and entry effects.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--page-transitions-blinds-bands</code></td>
+                    <td><code>6</code></td>
+                    <td>Effects <code>8</code> &amp; <code>9</code></td>
+                    <td>Controls the number of vertical or horizontal blind bands.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--page-transitions-checkerboard-columns</code></td>
+                    <td><code>10</code></td>
+                    <td>Effects <code>10</code> &amp; <code>11</code></td>
+                    <td>Controls the number of checkerboard columns across.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--page-transitions-checkerboard-rows</code></td>
+                    <td><code>10</code></td>
+                    <td>Effects <code>10</code> &amp; <code>11</code></td>
+                    <td>Controls the number of checkerboard rows down.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--page-transitions-random-dissolve-size</code></td>
+                    <td><code>4px</code></td>
+                    <td>Effect <code>12</code></td>
+                    <td>Controls the size of each dissolved pixel.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--page-transitions-random-bars-size</code></td>
+                    <td><code>4px</code></td>
+                    <td>Effects <code>21</code> &amp; <code>22</code></td>
+                    <td>Controls the thickness of each random bar.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Browser Support Section -->
+        <section id="browser-support">
+          <h2>Browser Support</h2>
+          <p class="section-desc">
+            Requires a browser with built-in Page Transitions support or support for the View Transition API + <a href="https://drafts.csswg.org/css-view-transitions-2/#selective-vt" target="_blank" rel="noopener noreferrer">Selective View Transitions with Active Types</a>.
+          </p>
+
+          <div class="features-grid">
+            <div class="feature-item">
+              <h3>⚡ SPA (Same-Document)</h3>
+              <ul>
+                <li>Chrome 125+</li>
+                <li>Safari 18.2+</li>
+              </ul>
+            </div>
+            <div class="feature-item">
+              <h3>🧭 MPA (Cross-Document)</h3>
+              <ul>
+                <li>Internet Explorer 5.5 – 8.0 <em>(built-in)</em></li>
+                <li>Chrome 126+</li>
+                <li>Safari 18.2+ <em>(buggy)</em></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Live Demos Section -->
+        <section id="demo-spa">
+          <h2>1. SPA Playground</h2>
+          <p class="section-desc">
+            Interactive Single-Page Application demo. Use the floating control bar at the bottom of the preview window to choose an Exit Effect and/or Entry Effect, then click <strong>Go!</strong> to transition between the 4 dynamic content views.
+          </p>
+
+          <div class="shell-frame">
+            <div class="shell-nav-bar">
+              <button type="button" id="spa-nav-back" title="Back" disabled>&larr;</button>
+              <button type="button" id="spa-nav-forward" title="Forward" disabled>&rarr;</button>
+              <button type="button" id="spa-nav-reload" title="Reload">&#x21BB;</button>
+              <div class="shell-url-bar">
+                <span id="spa-nav-url">/spa</span>
+              </div>
+              <a href="/spa" id="spa-nav-open" target="_blank" rel="noopener noreferrer" class="shell-open-btn" title="Open SPA demo in new tab">&#x2197;</a>
+            </div>
+            <iframe id="spa-iframe" src="/spa/" title="IE Page Transitions SPA Demo"></iframe>
+          </div>
+        </section>
+
+        <section id="demo-mpa">
+          <h2>2. MPA Navigation</h2>
+          <p class="section-desc">
+            Multi-Page Application demo using Cross-Document View Transitions. Click any of the effect links inside the preview to navigate to a new page, then use the browser UI’s <strong>Back (&larr;)</strong> and <strong>Forward (&rarr;)</strong> buttons (or the in-page links) to navigate back and forth.
+          </p>
+
+          <div class="shell-frame">
+            <div class="shell-nav-bar">
+              <button type="button" id="mpa-nav-back" title="Back" disabled>&larr;</button>
+              <button type="button" id="mpa-nav-forward" title="Forward" disabled>&rarr;</button>
+              <button type="button" id="mpa-nav-reload" title="Reload">&#x21BB;</button>
+              <div class="shell-url-bar">
+                <span id="mpa-nav-url">/mpa</span>
+              </div>
+              <a href="/mpa" id="mpa-nav-open" target="_blank" rel="noopener noreferrer" class="shell-open-btn" title="Open MPA demo in new tab">&#x2197;</a>
+            </div>
+            <iframe id="mpa-iframe" src="/mpa/" title="IE Page Transitions MPA Demo"></iframe>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>Built by <a href="https://www.bram.us">Bramus</a>. Source Code available on <a href="https://github.com/bramus/ie-page-transitions">GitHub</a>.</p>
     </footer>
+  </div>
 </body>
+
 </html>

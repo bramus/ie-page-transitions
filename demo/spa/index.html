@@ -58,12 +58,13 @@
     <!-- Configure IE Page Transitions Effect -->
     <meta http-equiv="Page-Enter" content="revealTrans(Duration=0.5,Transition=23)">
     <meta http-equiv="Page-Exit" content="revealTrans(Duration=0.5,Transition=23)">
+    <script>if (window.self !== window.top) document.documentElement.classList.add('in-iframe');</script>
 </head>
 <body>
     <header>
         <h1>IE Page Transitions (SPA)</h1>
         <p><em>Bringing back Internet Explorer’s Page Transitions thanks to the View Transition API</em></p>
-        <p><a href="../">&larr; To Index</a></p>
+        <p class="back-to-index"><a href="../">&larr; To Index</a></p>
     </header> 
     <main>
         <!-- Slide 1: Image Left + Text Right -->

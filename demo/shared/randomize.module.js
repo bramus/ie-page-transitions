@@ -3,8 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+if (window.self !== window.top) {
+    document.documentElement.classList.add('in-iframe');
+}
+
+const randomHex = () => {
+    return Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+}
+
 const randomColor = () => {
-    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+    return `#${randomHex()}`;
 }
 
 // @ref: https://stackoverflow.com/a/35970186/2076595
@@ -50,12 +58,24 @@ const cycleContentSlide = (forceIndex = null) => {
     });
 }
 
+const updateRandomLinks = () => {
+    document.querySelectorAll('a[href^="/mpa/both/23"]').forEach((link) => {
+        link.setAttribute('href', `/mpa/both/23?random=${randomHex()}`);
+    });
+}
+
 // Persist the outgoing page’s background color on Cross-Document (MPA) navigations
 window.addEventListener('pageswap', (e) => {
     if (e.viewTransition) {
         sessionStorage.setItem('prevBackgroundColor', getComputedStyle(document.body).getPropertyValue('background-color'));
     } else {
         sessionStorage.removeItem('prevBackgroundColor');
+    }
+});
+
+window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+        updateRandomLinks();
     }
 });
 
@@ -66,10 +86,16 @@ const randomize = () => {
 
     document.documentElement.style.setProperty('--page-transitions-backdrop-color', oldColor);
 
-    const newColor = randomColor();
+    const params = new URLSearchParams(window.location.search);
+    const randomParam = params.get('random');
+    const hex = (randomParam && /^[0-9a-fA-F]{6}$/.test(randomParam))
+        ? randomParam.toLowerCase()
+        : randomHex();
+    const newColor = `#${hex}`;
     document.body.style.setProperty('background-color', newColor);
 
+    updateRandomLinks();
     cycleContentSlide();
 }
 
-export { randomize, cycleContentSlide }
+export { randomize, cycleContentSlide, updateRandomLinks }
