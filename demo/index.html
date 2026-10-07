@@ -93,13 +93,12 @@
         <section id="overview">
           <h2>Overview</h2>
           <p class="section-desc">
-            Relive the late-90s web with all 23 classic PowerPoint-inspired <code>revealTrans</code> transitions—from <em>Box in</em>, <em>Circle out</em>, and <em>Vertical blinds</em> to <em>Checkerboard</em>, <em>Random dissolve</em>, and <em>Random bars</em>—rebuilt with modern CSS and the View Transition API.
+            Relive the late-90s web with all 23 classic PowerPoint-inspired <code>revealTrans</code> transitions — from <em>Box in</em>, <em>Circle out</em>, and <em>Vertical blinds</em> to <em>Checkerboard</em>, <em>Random dissolve</em>, and <em>Random bars</em> — rebuilt with modern CSS and the View Transition API.
           </p>
 
           <div class="card">
             <div class="card-header">
               <span class="card-title">Video Showcase</span>
-              <span class="card-meta">All 23 RevealTrans Effects</span>
             </div>
             <video class="showcase-video" controls autoplay loop muted playsinline preload="metadata" poster="/shared/demo-poster.png" src="/shared/demo.mp4"></video>
             <div class="preset-buttons" style="margin-top: 1rem; margin-bottom: 0;">
@@ -123,15 +122,15 @@
             </div>
             <div class="feature-item">
               <h3>⚡ SPA &amp; MPA Support</h3>
-              <p>Works with both Cross-Document View Transitions (MPA) and Same-Document View Transitions (SPA)—and MPA pages still work natively in IE 5.5–8.0!</p>
+              <p>Works with both Cross-Document View Transitions (MPA) and Same-Document View Transitions (SPA) in modern browsers.</p>
             </div>
             <div class="feature-item">
               <h3>🎨 Configurable via CSS</h3>
               <p>Customize blind bands, checkerboard grid dimensions, dissolve pixel size, bar thickness, and backdrop colors via CSS Custom Properties.</p>
             </div>
             <div class="feature-item">
-              <h3>🛡️ Progressive Enhancement</h3>
-              <p>Browsers without View Transition API or Active Types support simply navigate normally without errors or visual side effects.</p>
+              <h3>🕰️ IE 5.5–8.0 compatible!</h3>
+              <p>Because it uses the original <code>&lt;meta&gt;</code> tags, MPA pages also trigger the native DirectX Page Transitions when opened in Internet Explorer 5.5–8.0.</p>
             </div>
           </div>
         </section>
@@ -168,10 +167,10 @@
         <section id="revealtrans">
           <h2>The <code>RevealTrans</code> Filter</h2>
           <p class="section-desc">
-            The Page Transitions feature also came with a shorthand—<a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms533085(v=vs.85)" target="_blank" rel="noopener noreferrer">the <code>DXImageTransform.Microsoft.RevealTrans</code> Filter</a>—which offered 23 predefined transitions mirrored from the slide transitions found in Microsoft PowerPoint.
+            The Page Transitions feature also came with a shorthand — <a href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms533085(v=vs.85)" target="_blank" rel="noopener noreferrer">the <code>DXImageTransform.Microsoft.RevealTrans</code> Filter</a> — which offered 23 predefined transitions mirrored from the slide transitions found in Microsoft PowerPoint.
           </p>
           <p>
-            Using one of these predefined effects was as easy as referring to its number—ranging from <code>0</code> to <code>22</code>—in the <code>revealTrans</code> filter’s <code>Transition</code> property. Using the value <code>23</code> randomly selected one of the 23 available effects.
+            Using one of these predefined effects was as easy as referring to its number — ranging from <code>0</code> to <code>22</code> — in the <code>revealTrans</code> filter’s <code>Transition</code> property. Using the value <code>23</code> randomly selected one of the 23 available effects.
           </p>
 
           <div class="card" style="margin-top: 1.25rem;">
@@ -189,14 +188,14 @@
 
           <div class="card">
             <div class="card-header">
-              <span class="card-title">All 24 <code>RevealTrans</code> Transition Effects</span>
+              <span class="card-title">All 23 + 1 <code>RevealTrans</code> Transition Effects</span>
               <span class="card-meta">0 – 23</span>
             </div>
             <div class="data-table-wrapper">
               <table class="data-table">
                 <thead>
                   <tr>
-                    <th>Status</th>
+                    <th>Preview</th>
                     <th>#</th>
                     <th>Name</th>
                     <th>Description</th>
@@ -204,30 +203,30 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>✅</td><td><code>0</code></td><td><strong>Box in</strong></td><td>Rectangle towards centre</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='SQUARE', motion='in')</code></td></tr>
-                  <tr><td>✅</td><td><code>1</code></td><td><strong>Box out</strong></td><td>Rectangle from centre outwards</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='SQUARE', motion='out')</code></td></tr>
-                  <tr><td>✅</td><td><code>2</code></td><td><strong>Circle in</strong></td><td>Circle towards centre</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='CIRCLE', motion='in')</code></td></tr>
-                  <tr><td>✅</td><td><code>3</code></td><td><strong>Circle out</strong></td><td>Circle from centre outwards</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='CIRCLE', motion='out')</code></td></tr>
-                  <tr><td>✅</td><td><code>4</code></td><td><strong>Wipe up</strong></td><td>Horizontal wipe from bottom to top</td><td><code>DXImageTransform.Microsoft.Blinds(direction='up', bands=1)</code></td></tr>
-                  <tr><td>✅</td><td><code>5</code></td><td><strong>Wipe down</strong></td><td>Horizontal wipe from top to bottom</td><td><code>DXImageTransform.Microsoft.Blinds(direction='down', bands=1)</code></td></tr>
-                  <tr><td>✅</td><td><code>6</code></td><td><strong>Wipe right</strong></td><td>Vertical wipe from left to right</td><td><code>DXImageTransform.Microsoft.Blinds(direction='right', bands=1)</code></td></tr>
-                  <tr><td>✅</td><td><code>7</code></td><td><strong>Wipe left</strong></td><td>Vertical wipe from right to left</td><td><code>DXImageTransform.Microsoft.Blinds(direction='left', bands=1)</code></td></tr>
-                  <tr><td>✅</td><td><code>8</code></td><td><strong>Vertical blinds</strong></td><td>Vertical blinds from left to right</td><td><code>DXImageTransform.Microsoft.Blinds(direction='right')</code></td></tr>
-                  <tr><td>✅</td><td><code>9</code></td><td><strong>Horizontal blinds</strong></td><td>Horizontal blinds from top to bottom</td><td><code>DXImageTransform.Microsoft.Blinds(direction='down')</code></td></tr>
-                  <tr><td>✅</td><td><code>10</code></td><td><strong>Checkerboard across</strong></td><td>Box blinds from left to right</td><td><code>DXImageTransform.Microsoft.CheckerBoard(direction='right')</code></td></tr>
-                  <tr><td>✅</td><td><code>11</code></td><td><strong>Checkerboard down</strong></td><td>Box blinds from top to bottom</td><td><code>DXImageTransform.Microsoft.CheckerBoard(direction='down')</code></td></tr>
-                  <tr><td>✅</td><td><code>12</code></td><td><strong>Random dissolve</strong></td><td>Pixel fade</td><td><code>DXImageTransform.Microsoft.RandomDissolve</code></td></tr>
-                  <tr><td>✅</td><td><code>13</code></td><td><strong>Split vertical in</strong></td><td>Vertical window opening from middle to sides</td><td><code>DXImageTransform.Microsoft.Barn(orientation='vertical', motion='in')</code></td></tr>
-                  <tr><td>✅</td><td><code>14</code></td><td><strong>Split vertical out</strong></td><td>Vertical window closing from sides to middle</td><td><code>DXImageTransform.Microsoft.Barn(orientation='vertical', motion='out')</code></td></tr>
-                  <tr><td>✅</td><td><code>15</code></td><td><strong>Split horizontal in</strong></td><td>Horizontal window opening from middle to top/bottom</td><td><code>DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='in')</code></td></tr>
-                  <tr><td>✅</td><td><code>16</code></td><td><strong>Split horizontal out</strong></td><td>Horizontal window closing from top/bottom to middle</td><td><code>DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='out')</code></td></tr>
-                  <tr><td>✅</td><td><code>17</code></td><td><strong>Strips left down</strong></td><td>New content is revealed from the upper left corner to the lower right</td><td><code>DXImageTransform.Microsoft.Strips(motion='leftdown')</code></td></tr>
-                  <tr><td>✅</td><td><code>18</code></td><td><strong>Strips left up</strong></td><td>New content is revealed from the lower left corner to the upper right</td><td><code>DXImageTransform.Microsoft.Strips(motion='leftup')</code></td></tr>
-                  <tr><td>✅</td><td><code>19</code></td><td><strong>Strips right down</strong></td><td>New content is revealed from the upper right corner to the lower left</td><td><code>DXImageTransform.Microsoft.Strips(motion='rightdown')</code></td></tr>
-                  <tr><td>✅</td><td><code>20</code></td><td><strong>Strips right up</strong></td><td>New content is revealed from the lower right corner to the upper left</td><td><code>DXImageTransform.Microsoft.Strips(motion='rightup')</code></td></tr>
-                  <tr><td>✅</td><td><code>21</code></td><td><strong>Random bars horizontal</strong></td><td>Vertical line fade</td><td><code>DXImageTransform.Microsoft.RandomBars(orientation='horizontal')</code></td></tr>
-                  <tr><td>✅</td><td><code>22</code></td><td><strong>Random bars vertical</strong></td><td>Horizontal line fade</td><td><code>DXImageTransform.Microsoft.RandomBars(orientation='vertical')</code></td></tr>
-                  <tr><td>✅</td><td><code>23</code></td><td><strong>Random</strong></td><td>Randomly selects one of the 23 effects above</td><td><em>—</em></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/0.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>0</code></td><td><strong>Box in</strong></td><td>Rectangle towards centre</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='SQUARE', motion='in')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/1.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>1</code></td><td><strong>Box out</strong></td><td>Rectangle from centre outwards</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='SQUARE', motion='out')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/2.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>2</code></td><td><strong>Circle in</strong></td><td>Circle towards centre</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='CIRCLE', motion='in')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/3.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>3</code></td><td><strong>Circle out</strong></td><td>Circle from centre outwards</td><td><code>DXImageTransform.Microsoft.Iris(irisstyle='CIRCLE', motion='out')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/4.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>4</code></td><td><strong>Wipe up</strong></td><td>Horizontal wipe from bottom to top</td><td><code>DXImageTransform.Microsoft.Blinds(direction='up', bands=1)</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/5.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>5</code></td><td><strong>Wipe down</strong></td><td>Horizontal wipe from top to bottom</td><td><code>DXImageTransform.Microsoft.Blinds(direction='down', bands=1)</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/6.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>6</code></td><td><strong>Wipe right</strong></td><td>Vertical wipe from left to right</td><td><code>DXImageTransform.Microsoft.Blinds(direction='right', bands=1)</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/7.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>7</code></td><td><strong>Wipe left</strong></td><td>Vertical wipe from right to left</td><td><code>DXImageTransform.Microsoft.Blinds(direction='left', bands=1)</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/8.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>8</code></td><td><strong>Vertical blinds</strong></td><td>Vertical blinds from left to right</td><td><code>DXImageTransform.Microsoft.Blinds(direction='right')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/9.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>9</code></td><td><strong>Horizontal blinds</strong></td><td>Horizontal blinds from top to bottom</td><td><code>DXImageTransform.Microsoft.Blinds(direction='down')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/10.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>10</code></td><td><strong>Checkerboard across</strong></td><td>Box blinds from left to right</td><td><code>DXImageTransform.Microsoft.CheckerBoard(direction='right')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/11.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>11</code></td><td><strong>Checkerboard down</strong></td><td>Box blinds from top to bottom</td><td><code>DXImageTransform.Microsoft.CheckerBoard(direction='down')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/12.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>12</code></td><td><strong>Random dissolve</strong></td><td>Pixel fade</td><td><code>DXImageTransform.Microsoft.RandomDissolve</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/13.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>13</code></td><td><strong>Split vertical in</strong></td><td>Vertical window opening from middle to sides</td><td><code>DXImageTransform.Microsoft.Barn(orientation='vertical', motion='in')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/14.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>14</code></td><td><strong>Split vertical out</strong></td><td>Vertical window closing from sides to middle</td><td><code>DXImageTransform.Microsoft.Barn(orientation='vertical', motion='out')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/15.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>15</code></td><td><strong>Split horizontal in</strong></td><td>Horizontal window opening from middle to top/bottom</td><td><code>DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='in')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/16.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>16</code></td><td><strong>Split horizontal out</strong></td><td>Horizontal window closing from top/bottom to middle</td><td><code>DXImageTransform.Microsoft.Barn(orientation='horizontal', motion='out')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/17.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>17</code></td><td><strong>Strips left down</strong></td><td>New content is revealed from the upper left corner to the lower right</td><td><code>DXImageTransform.Microsoft.Strips(motion='leftdown')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/18.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>18</code></td><td><strong>Strips left up</strong></td><td>New content is revealed from the lower left corner to the upper right</td><td><code>DXImageTransform.Microsoft.Strips(motion='leftup')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/19.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>19</code></td><td><strong>Strips right down</strong></td><td>New content is revealed from the upper right corner to the lower left</td><td><code>DXImageTransform.Microsoft.Strips(motion='rightdown')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/20.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>20</code></td><td><strong>Strips right up</strong></td><td>New content is revealed from the lower right corner to the upper left</td><td><code>DXImageTransform.Microsoft.Strips(motion='rightup')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/21.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>21</code></td><td><strong>Random bars horizontal</strong></td><td>Vertical line fade</td><td><code>DXImageTransform.Microsoft.RandomBars(orientation='horizontal')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/22.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>22</code></td><td><strong>Random bars vertical</strong></td><td>Horizontal line fade</td><td><code>DXImageTransform.Microsoft.RandomBars(orientation='vertical')</code></td></tr>
+                  <tr><td><video class="effect-preview" src="/shared/effects/23.mp4" width="96" height="54" loop muted playsinline preload="metadata"></video></td><td><code>23</code></td><td><strong>Random</strong></td><td>Randomly selects one of the 23 effects above</td><td><em>—</em></td></tr>
                 </tbody>
               </table>
             </div>

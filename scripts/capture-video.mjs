@@ -415,6 +415,52 @@ try {
 	console.log(`Saving first frame to ${OUTPUT_POSTER}...`);
 	await fs.copyFile(path.join(FRAMES_DIR, 'frame_00000.png'), OUTPUT_POSTER);
 
+	// 7. Also generate per-effect looping MP4 previews in demo/shared/effects/
+	if (EFFECTS.length === 23) {
+		const effectsDir = path.join(DEMO_DIR, 'shared', 'effects');
+		await fs.mkdir(effectsDir, { recursive: true });
+		const framesPerEffect = HOLD_BEFORE_FRAMES + BUTTON_ACTIVE_FRAMES + (transitionFrames + 1) + HOLD_AFTER_FRAMES;
+		console.log(`Generating 24 effect preview MP4s in ${effectsDir}...`);
+
+		for (let i = 0; i < 23; i++) {
+			const startFrame = i * framesPerEffect + 5;
+			const endFrame = (i + 1) * framesPerEffect;
+			const startSec = (startFrame / FPS).toFixed(4);
+			const durationSec = ((endFrame - startFrame) / FPS).toFixed(4);
+			const outMp4 = path.join(effectsDir, `${i}.mp4`);
+
+			execFileSync(ffmpegBin, [
+				'-y',
+				'-ss', startSec,
+				'-t', durationSec,
+				'-i', OUTPUT_MP4,
+				'-vf', 'scale=240:-2:flags=lanczos',
+				'-c:v', 'libx264',
+				'-pix_fmt', 'yuv420p',
+				'-crf', '20',
+				'-preset', 'slow',
+				'-movflags', '+faststart',
+				'-an',
+				outMp4,
+			]);
+		}
+
+		execFileSync(ffmpegBin, [
+			'-y',
+			'-ss', ((3 * framesPerEffect) / FPS).toFixed(4), '-t', (framesPerEffect / FPS).toFixed(4), '-i', OUTPUT_MP4,
+			'-ss', ((10 * framesPerEffect) / FPS).toFixed(4), '-t', (framesPerEffect / FPS).toFixed(4), '-i', OUTPUT_MP4,
+			'-ss', ((12 * framesPerEffect) / FPS).toFixed(4), '-t', (framesPerEffect / FPS).toFixed(4), '-i', OUTPUT_MP4,
+			'-filter_complex', '[0:v][1:v][2:v]concat=n=3:v=1:a=0,scale=240:-2:flags=lanczos',
+			'-c:v', 'libx264',
+			'-pix_fmt', 'yuv420p',
+			'-crf', '20',
+			'-preset', 'slow',
+			'-movflags', '+faststart',
+			'-an',
+			path.join(effectsDir, '23.mp4'),
+		]);
+	}
+
 	console.log(`Successfully generated ${OUTPUT_MP4} and ${OUTPUT_POSTER}!`);
 } finally {
 	try {

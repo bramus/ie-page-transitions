@@ -15,6 +15,7 @@ class IEPageTransitionsDemoApp {
     this._checkBrowserSupport();
     this._setupMicroLighterCopyButtons();
     this._setupScrollspy();
+    this._setupEffectPreviewVideos();
     this._setupBrowserShell({
       iframeId: 'spa-iframe',
       urlId: 'spa-nav-url',
@@ -32,6 +33,21 @@ class IEPageTransitionsDemoApp {
       reloadId: 'mpa-nav-reload',
       openId: 'mpa-nav-open',
       defaultPath: '/mpa',
+    });
+  }
+
+  _setupEffectPreviewVideos() {
+    document.querySelectorAll('.data-table tbody tr').forEach((row) => {
+      const video = row.querySelector('video.effect-preview');
+      if (!video) return;
+
+      row.addEventListener('mouseenter', () => {
+        video.play().catch(() => {});
+      });
+
+      row.addEventListener('mouseleave', () => {
+        video.pause();
+      });
     });
   }
 

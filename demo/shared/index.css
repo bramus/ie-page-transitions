@@ -556,7 +556,7 @@ micro-lighter::part(copy-button):hover {
 .data-table td {
   padding: 0.625rem 0.75rem;
   border-bottom: 1px solid var(--border-color);
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .data-table tr:last-child td {
@@ -565,6 +565,24 @@ micro-lighter::part(copy-button):hover {
 
 .data-table tr:hover td {
   background-color: rgba(0, 0, 0, 0.02);
+}
+
+.effect-preview {
+  display: block;
+  width: 96px;
+  height: 54px;
+  min-width: 96px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  object-fit: cover;
+  background-color: var(--bg-surface-elevated);
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+}
+
+.data-table tr:hover .effect-preview,
+.data-table tr:focus-within .effect-preview {
+  filter: grayscale(0);
 }
 
 /* Preset / Action Buttons */
